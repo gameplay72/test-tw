@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WONTAKE — сеть серверов CS2</title>
 <link id="fav" rel="icon" type="image/png" href="">
+<meta name="description" content="WONTAKE — сеть серверов Counter-Strike 2: PUBLIC, AWP, JAIL, MANIAC, FUN. Живой онлайн, карты, привилегии и мгновенное подключение через Steam.">
+<meta name="theme-color" content="#04060c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WONTAKE">
+<meta property="og:title" content="WONTAKE — сеть серверов CS2">
+<meta property="og:description" content="49 серверов, 22 карты, подключение в один клик через Steam.">
+<meta property="og:image" content="img/de_mirage.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -38,7 +46,7 @@ input,select{font-family:inherit}
 ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 *{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--accent) 55%,#1a2338) rgba(6,9,17,.6)}
 
-#boot{position:fixed;inset:0;z-index:2000;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;animation:bootOut .7s ease 2s forwards}
+#boot{position:fixed;inset:0;z-index:2000;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;animation:bootOut .7s ease 1.7s forwards}
 #boot .b-mark{width:86px;height:86px;display:grid;place-items:center;animation:bootFloat 1.6s ease infinite alternate}
 #boot .b-mark img,#boot .b-mark svg{width:76px;height:76px;filter:drop-shadow(0 0 36px color-mix(in srgb,var(--accent) 65%,transparent))}
 #boot .b-word{font-family:var(--fd);font-weight:900;font-size:34px;letter-spacing:10px;animation:bootWord 1.6s cubic-bezier(.2,.7,.2,1) forwards}
@@ -97,11 +105,14 @@ body.sub #ambient .subscrim{opacity:1}
 .tb-ic svg{width:18px;height:18px}
 .tb-ic.muted{color:var(--dim)}
 .tb-ic.muted:hover{color:var(--red);border-color:var(--red);box-shadow:0 0 16px color-mix(in srgb,var(--red) 30%,transparent)}
-.avatarbtn{width:40px;height:40px;border-radius:50%;overflow:hidden;border:1px solid var(--accent);display:grid;place-items:center;padding:0;
-  background:radial-gradient(circle at 50% 32%,#1c2740,#0a0f1c);color:#fff;transition:.2s;box-shadow:0 0 16px color-mix(in srgb,var(--accent) 45%,transparent)}
+.avatarbtn{position:relative;width:40px;height:40px;border-radius:50%;overflow:hidden;border:1px solid var(--line2);display:grid;place-items:center;padding:0;
+  background:radial-gradient(circle at 50% 32%,#1c2740,#0a0f1c);color:#fff;transition:.2s}
 .avatarbtn:hover{transform:scale(1.07);border-color:#fff}
-.avatarbtn img{width:100%;height:100%;object-fit:cover}
-.avatarbtn svg{width:19px;height:19px}
+.avatarbtn.authed{border-color:var(--accent);box-shadow:0 0 16px color-mix(in srgb,var(--accent) 45%,transparent)}
+.avatarbtn .av-in{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--fd);font-weight:800;font-size:13px;color:#04121c;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.avatarbtn img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.avatarbtn svg{width:19px;height:19px;position:relative}
+.avatarbtn .av-dot{position:absolute;right:0;bottom:0;width:12px;height:12px;border-radius:50%;background:var(--green);border:2px solid #04060c;box-shadow:0 0 8px var(--green);z-index:2}
 
 main{flex:1;min-height:0;position:relative}
 .screen{position:absolute;inset:0;display:none;overflow-y:auto;overflow-x:hidden;padding:12px clamp(14px,2.6vw,40px) 28px}
@@ -138,7 +149,7 @@ main{flex:1;min-height:0;position:relative}
 .fp-tag{display:inline-flex;align-items:center;gap:9px;font-family:var(--fm);font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--tint);margin-bottom:12px}
 .fp-tag::before{content:'';width:26px;height:2px;background:var(--tint);box-shadow:0 0 10px var(--tint)}
 .fp-title{font-family:var(--fd);font-weight:900;font-size:clamp(38px,5.6vw,74px);line-height:1;letter-spacing:-1px;text-transform:lowercase;text-shadow:0 8px 40px rgba(0,0,0,.75);animation:fpIn .5s cubic-bezier(.2,.7,.2,1)}
-.fp-desc{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:600px;line-height:1.55;text-shadow:0 2px 12px rgba(0,0,0,.85)}
+.fp-desc{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:620px;line-height:1.55;text-shadow:0 2px 12px rgba(0,0,0,.85)}
 .fp-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
 .fp-chip{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:8px 13px;border-radius:12px;border:1px solid var(--line2);background:rgba(6,10,18,.55);backdrop-filter:blur(8px)}
 .fp-chip svg{width:13px;height:13px;color:var(--tint)}
@@ -209,7 +220,7 @@ main{flex:1;min-height:0;position:relative}
 .freshstrip .fs-label svg{width:13px;height:13px}
 .fs-chip{display:flex;align-items:center;gap:8px;padding:7px 13px 7px 8px;border-radius:12px;border:1px solid color-mix(in srgb,var(--sand) 40%,transparent);background:color-mix(in srgb,var(--sand) 9%,rgba(6,10,18,.6));color:var(--text);font-family:var(--fm);font-size:11px;font-weight:700;transition:.2s}
 .fs-chip:hover{border-color:var(--sand);box-shadow:0 0 18px color-mix(in srgb,var(--sand) 25%,transparent);transform:translateY(-1px)}
-.fs-chip .fs-th{width:30px;height:20px;border-radius:6px;background-size:cover;background-position:center;border:1px solid var(--line2)}
+.fs-chip .fs-th{width:30px;height:20px;border-radius:6px;background-size:cover;background-position:center;border:1px solid var(--line2);flex-shrink:0}
 .fs-chip .fs-n{font-size:8.5px;font-weight:800;letter-spacing:1px;color:#1a1200;background:var(--sand);padding:2px 6px;border-radius:6px;font-family:var(--fb)}
 
 .svtabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px}
@@ -245,11 +256,11 @@ body.favview .drag-hint{display:flex}
   background:linear-gradient(180deg,rgba(4,6,12,.94),rgba(4,6,12,.68) 78%,transparent);backdrop-filter:blur(8px)}
 .mg-thumb{width:58px;height:38px;border-radius:9px;background-size:cover;background-position:center;border:1px solid var(--line2);flex-shrink:0;box-shadow:0 6px 18px rgba(0,0,0,.5);cursor:pointer;transition:.25s}
 .mg-thumb:hover{transform:scale(1.06);border-color:var(--accent)}
-.mg-name{font-family:var(--fm);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.mg-name{font-family:var(--fm);font-weight:700;font-size:12px;letter-spacing:2.2px;text-transform:uppercase;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .mg-new{font-family:var(--fb);font-size:8.5px;font-weight:800;letter-spacing:1px;color:#1a1200;background:var(--sand);padding:2px 7px;border-radius:6px}
 .mg-sub{font-size:11px;color:var(--dim);font-weight:600;margin-top:3px}
-.mg-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
-.mg-share{width:110px;height:4px;border-radius:4px;background:rgba(140,160,220,.14);overflow:hidden}
+.mg-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent);min-width:20px}
+.mg-share{width:110px;height:4px;border-radius:4px;background:rgba(140,160,220,.14);overflow:hidden;flex-shrink:0}
 .mg-share i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--accent));border-radius:4px;transition:width .8s}
 
 .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -266,18 +277,18 @@ body[data-cols="3"] .sgrid{grid-template-columns:repeat(3,1fr)}
 .srv:hover::after{transform:translateX(130%)}
 .srv.dragging{opacity:.35}
 .srv.drop-over{outline:2px dashed var(--accent);outline-offset:3px}
-.srv .s-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.2,.7,.2,1);filter:saturate(1.08) contrast(1.04)}
+.srv .s-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.2,.7,.2,1),background-image .4s;filter:saturate(1.08) contrast(1.04)}
 .srv:hover .s-bg,.srv.focused .s-bg{transform:scale(1.06)}
 .srv .s-shade{position:absolute;inset:0;background:
   linear-gradient(100deg,rgba(4,6,12,.7) 0%,rgba(4,6,12,.16) 48%,rgba(4,6,12,.4) 100%),
   linear-gradient(0deg,rgba(4,6,12,.86) 0%,transparent 60%)}
 .srv .s-top{position:absolute;top:13px;left:16px;right:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;z-index:2}
-.srv .s-name{font-family:var(--fd);font-weight:800;font-size:14px;letter-spacing:.2px;text-shadow:0 2px 12px rgba(0,0,0,.95);display:flex;align-items:center;gap:8px;min-width:0}
+.srv .s-name{font-family:var(--fd);font-weight:800;font-size:14px;letter-spacing:.2px;text-shadow:0 2px 12px rgba(0,0,0,.95);display:flex;align-items:center;gap:8px;min-width:0;flex:1}
 .srv .s-name span.nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .srv .s-new{font-family:var(--fb);font-size:8.5px;font-weight:800;letter-spacing:1px;color:#1a1200;background:var(--sand);padding:3px 7px;border-radius:7px;flex-shrink:0;box-shadow:0 0 14px color-mix(in srgb,var(--sand) 55%,transparent)}
 .srv .s-mode{font-size:8.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mc);border:1px solid color-mix(in srgb,var(--mc) 55%,transparent);background:rgba(3,5,10,.6);padding:3px 7px;border-radius:8px;backdrop-filter:blur(4px);flex-shrink:0}
-.srv .s-topright{display:flex;align-items:center;gap:7px;flex-shrink:0}
-.srv .s-map{font-family:var(--fm);font-size:11px;color:#e4ebfa;text-shadow:0 2px 8px rgba(0,0,0,.95);white-space:nowrap}
+.srv .s-topright{display:flex;align-items:center;gap:7px;flex-shrink:0;min-width:0}
+.srv .s-map{font-family:var(--fm);font-size:11px;color:#e4ebfa;text-shadow:0 2px 8px rgba(0,0,0,.95);white-space:nowrap;max-width:132px;overflow:hidden;text-overflow:ellipsis}
 body.hide-map .srv .s-map{display:none}
 .sact{width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,255,255,.16);background:rgba(3,5,10,.55);color:#cfd6ea;display:grid;place-items:center;transition:.2s;backdrop-filter:blur(5px);flex-shrink:0;padding:0}
 .sact svg{width:14px;height:14px}
@@ -310,7 +321,7 @@ body.hide-ping .srv .ping{display:none}
 .srv .s-edge i.full{background:linear-gradient(90deg,var(--amber),var(--red))}
 body[data-density="compact"] .srv .s-top{top:10px}
 body[data-density="compact"] .srv .s-bot{bottom:9px}
-.modebanner{display:flex;align-items:center;gap:13px;margin:26px 0 16px;padding:13px 17px;border-radius:16px;border:1px solid color-mix(in srgb,var(--mc) 40%,var(--line));background:linear-gradient(100deg,color-mix(in srgb,var(--mc) 14%,transparent),transparent 65%)}
+.modebanner{display:flex;align-items:center;gap:13px;margin:26px 0 16px;padding:13px 17px;border-radius:16px;border:1px solid color-mix(in srgb,var(--mc) 40%,var(--line));background:linear-gradient(100deg,color-mix(in srgb,var(--mc) 14%,transparent),transparent 65%);flex-wrap:wrap}
 .modebanner svg{width:20px;height:20px;color:var(--mc)}
 .modebanner b{font-family:var(--fd);font-size:16px;text-transform:lowercase}
 .modebanner span{font-size:12px;color:var(--muted);font-weight:600}
@@ -323,13 +334,14 @@ body[data-density="compact"] .srv .s-bot{bottom:9px}
 .mapsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
 .mtile{position:relative;height:196px;border-radius:16px;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:#0d1120;transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s;animation:cardIn .5s cubic-bezier(.2,.7,.2,1) backwards}
 .mtile:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 50%,transparent);box-shadow:0 20px 48px -16px color-mix(in srgb,var(--accent) 40%,transparent)}
+.mtile .m-bg{position:absolute;inset:0;background-size:cover;background-position:center}
 .mtile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .mtile:hover img,.mtile.focused img{transform:scale(1.07)}
 .mtile .m-shade{position:absolute;inset:0;background:linear-gradient(185deg,rgba(4,6,12,.1) 30%,rgba(4,6,12,.9))}
 .mtile .m-expand{position:absolute;top:10px;right:10px;z-index:2}
 .mtile .m-new{position:absolute;top:10px;left:10px;z-index:2;font-size:8.5px;font-weight:800;letter-spacing:1px;color:#1a1200;background:var(--sand);padding:3px 8px;border-radius:8px;box-shadow:0 0 14px color-mix(in srgb,var(--sand) 50%,transparent)}
 .mtile .m-body{position:absolute;left:15px;right:15px;bottom:13px;z-index:2}
-.mtile .m-name{font-family:var(--fm);font-weight:700;font-size:13px;letter-spacing:1px;text-shadow:0 2px 10px rgba(0,0,0,.9)}
+.mtile .m-name{font-family:var(--fm);font-weight:700;font-size:13px;letter-spacing:1px;text-shadow:0 2px 10px rgba(0,0,0,.9);word-break:break-all}
 .mtile .m-stats{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
 .mtile .m-chip{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;color:#cfd6ea;background:rgba(3,5,10,.6);border:1px solid rgba(255,255,255,.14);padding:4px 9px;border-radius:8px;backdrop-filter:blur(5px)}
 .mtile .m-chip svg{width:11px;height:11px;color:var(--accent)}
@@ -338,19 +350,22 @@ body[data-density="compact"] .srv .s-bot{bottom:9px}
 
 #lightbox{position:fixed;inset:0;z-index:970;background:rgba(2,4,8,.84);backdrop-filter:blur(18px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;opacity:0;visibility:hidden;transition:.3s}
 #lightbox.open{opacity:1;visibility:visible}
-#lightbox .lb-img{width:min(1100px,94vw);max-height:64vh;object-fit:cover;border-radius:18px;border:1px solid var(--line2);box-shadow:0 50px 130px rgba(0,0,0,.85);transform:scale(.97);transition:.35s cubic-bezier(.2,.7,.2,1)}
-#lightbox.open .lb-img{transform:none}
+#lightbox .lb-stage{position:relative;width:min(1100px,94vw);max-height:64vh;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 50px 130px rgba(0,0,0,.85);transform:scale(.97);transition:.35s cubic-bezier(.2,.7,.2,1);background:#0a0f1c}
+#lightbox.open .lb-stage{transform:none}
+#lightbox .lb-ph{position:absolute;inset:0;background-size:cover;background-position:center;display:grid;place-items:center}
+#lightbox .lb-ph span{font-family:var(--fd);font-weight:900;font-size:clamp(20px,4vw,44px);color:rgba(255,255,255,.16);letter-spacing:-1px;text-transform:uppercase;padding:0 20px;text-align:center;word-break:break-all}
+#lightbox .lb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #lightbox .lb-bar{width:min(1100px,94vw);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-#lightbox .lb-name{font-family:var(--fd);font-weight:800;font-size:20px;display:flex;align-items:center;gap:10px}
+#lightbox .lb-name{font-family:var(--fd);font-weight:800;font-size:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;word-break:break-all}
 #lightbox .lb-name .lb-new{font-family:var(--fb);font-size:9px;font-weight:800;letter-spacing:1px;color:#1a1200;background:var(--sand);padding:3px 8px;border-radius:7px}
 #lightbox .lb-sub{font-family:var(--fm);font-size:11px;color:var(--muted);margin-top:4px}
 #lightbox .lb-actions{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
-#lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:rgba(8,12,22,.7);color:#fff;display:grid;place-items:center;transition:.2s;backdrop-filter:blur(8px);padding:0}
+#lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:rgba(8,12,22,.7);color:#fff;display:grid;place-items:center;transition:.2s;backdrop-filter:blur(8px);padding:0;z-index:2}
 #lightbox .lb-nav:hover{border-color:var(--accent);box-shadow:0 0 20px color-mix(in srgb,var(--accent) 40%,transparent)}
 #lightbox .lb-nav svg{width:18px;height:18px}
 #lightbox .lb-prev{left:22px}#lightbox .lb-next{right:22px}
 #lightbox .lb-close{position:absolute;top:20px;right:22px;transform:none}
-#lightbox .lb-count{position:absolute;top:26px;left:26px;font-family:var(--fm);font-size:11px;color:var(--muted);letter-spacing:1px}
+#lightbox .lb-count{position:absolute;top:26px;left:26px;font-family:var(--fm);font-size:11px;color:var(--muted);letter-spacing:1px;z-index:2}
 
 .panel{border-radius:18px;border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(14px);padding:22px;margin-bottom:16px}
 .rules{display:flex;flex-direction:column;gap:11px}
@@ -420,11 +435,17 @@ body[data-density="compact"] .srv .s-bot{bottom:9px}
 .g-head b{font-family:var(--fd);font-weight:900;letter-spacing:2px;font-size:15px}
 .g-head small{display:block;font-family:var(--fm);font-size:8.5px;letter-spacing:2px;color:var(--dim)}
 .g-profile{display:flex;align-items:center;gap:13px;padding:15px;border-radius:16px;border:1px solid var(--line2);background:rgba(12,18,32,.7);margin-bottom:6px}
-.g-profile .av{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 50% 32%,#1c2740,#0a0f1c);border:1px solid var(--accent);display:grid;place-items:center;color:#fff;flex-shrink:0;overflow:hidden}
-.g-profile .av img{width:100%;height:100%;object-fit:cover}
-.g-profile .av svg{width:22px;height:22px}
-.g-profile b{font-size:14px;display:block}
-.g-profile small{font-size:10px;color:var(--green);font-weight:700;font-family:var(--fm)}
+.g-profile.authed{border-color:color-mix(in srgb,var(--accent) 45%,transparent);box-shadow:0 0 24px -8px color-mix(in srgb,var(--accent) 45%,transparent)}
+.g-profile .av{position:relative;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 50% 32%,#1c2740,#0a0f1c);border:1px solid var(--line2);display:grid;place-items:center;color:#fff;flex-shrink:0;overflow:hidden}
+.g-profile.authed .av{border-color:var(--accent)}
+.g-profile .av .av-in{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--fd);font-weight:800;font-size:15px;color:#04121c;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.g-profile .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.g-profile .av svg{width:22px;height:22px;position:relative}
+.g-profile .g-txt{min-width:0}
+.g-profile b{font-size:14px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+.g-profile small{font-size:9.5px;font-weight:700;font-family:var(--fm);display:flex;align-items:center;gap:5px}
+.g-profile small .sd{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 7px var(--green);flex-shrink:0}
+.g-profile small .sd.warn{background:var(--amber);box-shadow:0 0 7px var(--amber)}
 .g-profile .g-pacts{margin-left:auto;display:flex;gap:6px}
 .g-steamid{display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10px;color:var(--dim);padding:0 4px 10px}
 .g-steamid button{color:var(--muted);display:grid;place-items:center}
@@ -479,12 +500,13 @@ body[data-density="compact"] .srv .s-bot{bottom:9px}
 .sb-hint .keys span{font-family:var(--fm);font-size:10px;border:1px solid var(--line2);padding:4px 9px;border-radius:6px;color:var(--muted)}
 .sb-sec{font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);padding:10px 14px 6px}
 .sres{display:flex;align-items:center;gap:13px;padding:12px 14px;border-radius:12px;cursor:pointer;transition:.15s}
-.sres .sr-ic{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--mc) 16%,rgba(10,16,28,.8));color:var(--mc);flex-shrink:0;overflow:hidden}
+.sres .sr-ic{position:relative;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background-size:cover;background-position:center;color:var(--mc);flex-shrink:0;overflow:hidden}
 .sres .sr-ic svg{width:16px;height:16px}
-.sres .sr-ic img{width:100%;height:100%;object-fit:cover}
-.sres b{font-size:13.5px;display:block}
-.sres small{font-family:var(--fm);font-size:10px;color:var(--dim)}
-.sres .sr-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.sres .sr-ic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sres .sr-tx{min-width:0}
+.sres b{font-size:13.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sres small{font-family:var(--fm);font-size:10px;color:var(--dim);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sres .sr-right{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .sres .sr-pl{font-family:var(--fm);font-size:11px;color:var(--green);font-weight:700}
 .sres .sr-mode{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--mc);border:1px solid color-mix(in srgb,var(--mc) 45%,transparent);padding:3px 8px;border-radius:6px}
 
@@ -498,7 +520,7 @@ body[data-density="compact"] .srv .s-bot{bottom:9px}
 .mo-ic{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:color-mix(in srgb,var(--mc,var(--accent)) 16%,rgba(10,16,28,.8));color:var(--mc,var(--accent));flex-shrink:0}
 .mo-ic svg{width:19px;height:19px}
 .mo-head b{font-family:var(--fd);font-size:15px;display:block}
-.mo-head small{color:var(--muted);font-size:11.5px;font-weight:600}
+.mo-head small{color:var(--muted);font-size:11.5px;font-weight:600;word-break:break-all}
 .mo-x{margin-left:auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);color:var(--muted);display:grid;place-items:center;transition:.2s;padding:0;flex-shrink:0}
 .mo-x:hover{color:#fff;border-color:var(--red)}
 .mo-x svg{width:14px;height:14px}
@@ -511,7 +533,7 @@ body[data-density="compact"] .srv .s-bot{bottom:9px}
 .cn-steps{display:flex;flex-direction:column;gap:10px;margin:18px 0}
 .cn-step{display:flex;gap:13px;font-size:13px;color:var(--muted);line-height:1.55}
 .cn-step .n{width:24px;height:24px;border-radius:50%;background:rgba(140,160,220,.12);display:grid;place-items:center;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--accent);flex-shrink:0}
-.cn-step code{font-family:var(--fm);font-size:11.5px;background:rgba(0,0,0,.4);border:1px solid var(--line);padding:2px 7px;border-radius:6px;color:var(--amber)}
+.cn-step code{font-family:var(--fm);font-size:11.5px;background:rgba(0,0,0,.4);border:1px solid var(--line);padding:2px 7px;border-radius:6px;color:var(--amber);word-break:break-all}
 .cn-btns{display:flex;gap:10px;flex-wrap:wrap}
 .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:14px;font-weight:800;font-size:13.5px;color:#04121c;background:linear-gradient(120deg,var(--accent),color-mix(in srgb,var(--accent) 60%,#fff));box-shadow:0 8px 26px -6px color-mix(in srgb,var(--accent) 55%,transparent);transition:.2s}
 .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.1)}
@@ -528,7 +550,12 @@ body[data-density="compact"] .srv .s-bot{bottom:9px}
 .steam-hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:6px 0 18px}
 .steam-hero .st-ic{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#1b2838,#2a475e);display:grid;place-items:center;color:#66c0f4;margin-bottom:14px;box-shadow:0 12px 34px rgba(102,192,244,.25)}
 .steam-hero .st-ic svg{width:30px;height:30px}
-.steam-hero p{font-size:12.5px;color:var(--muted);line-height:1.6;max-width:400px}
+.steam-hero p{font-size:12.5px;color:var(--muted);line-height:1.6;max-width:420px}
+.auth-progress{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;border:1px solid var(--line2);background:rgba(4,7,13,.6);margin-bottom:14px}
+.auth-progress .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(140,160,220,.25);border-top-color:var(--accent);animation:spin .8s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.auth-progress b{font-size:13px;display:block}
+.auth-progress small{font-size:11px;color:var(--muted)}
 .netrow{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(6,10,18,.5);margin-bottom:10px}
 .netrow .n-ic{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);flex-shrink:0}
 .netrow .n-ic svg{width:16px;height:16px}
@@ -551,7 +578,7 @@ body[data-density="compact"] .srv .s-bot{bottom:9px}
 .cp-close:hover{color:#fff}
 .cp-close svg{width:14px;height:14px}
 .cp-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
-.msg{max-width:84%;padding:11px 14px;border-radius:15px;font-size:13px;line-height:1.5;animation:msgIn .3s ease}
+.msg{max-width:84%;padding:11px 14px;border-radius:15px;font-size:13px;line-height:1.5;animation:msgIn .3s ease;word-break:break-word}
 @keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .msg.bot{align-self:flex-start;background:rgba(16,22,38,.9);border:1px solid var(--line);border-bottom-left-radius:4px}
 .msg.me{align-self:flex-end;background:linear-gradient(120deg,var(--accent),var(--accent2));border-bottom-right-radius:4px;color:#04121c;font-weight:600}
@@ -573,14 +600,14 @@ body[data-density="compact"] .srv .s-bot{bottom:9px}
 #toasts{position:fixed;top:78px;right:20px;z-index:1200;display:flex;flex-direction:column;gap:10px;align-items:flex-end;pointer-events:none}
 .toast{--tc:var(--green);pointer-events:auto;display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:16px;border:1px solid var(--line2);
   background:rgba(8,12,22,.95);backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,.6);font-size:13px;font-weight:700;cursor:pointer;
-  animation:toastIn .4s cubic-bezier(.2,.7,.2,1);position:relative;overflow:hidden;max-width:min(420px,88vw)}
+  animation:toastIn .4s cubic-bezier(.2,.7,.2,1);position:relative;overflow:hidden;max-width:min(430px,88vw)}
 .toast.out{animation:toastOut .3s ease forwards}
 .toast .t-ic{width:32px;height:32px;border-radius:50%;background:color-mix(in srgb,var(--tc) 16%,transparent);color:var(--tc);display:grid;place-items:center;flex-shrink:0}
 .toast .t-ic svg{width:15px;height:15px}
-.toast small{display:block;font-size:10px;color:var(--dim);font-weight:600;margin-top:2px}
+.toast small{display:block;font-size:10px;color:var(--dim);font-weight:600;margin-top:2px;line-height:1.4}
 .toast .t-act{margin-left:6px;padding:7px 13px;border-radius:9px;border:1px solid color-mix(in srgb,var(--tc) 55%,transparent);color:var(--tc);font-size:11px;font-weight:800;flex-shrink:0;transition:.15s}
 .toast .t-act:hover{background:color-mix(in srgb,var(--tc) 14%,transparent)}
-.toast::after{content:'';position:absolute;bottom:0;left:0;height:2px;background:var(--tc);width:100%;transform-origin:left;animation:tprog 4s linear forwards}
+.toast::after{content:'';position:absolute;bottom:0;left:0;height:2px;background:var(--tc);width:100%;transform-origin:left;animation:tprog 5s linear forwards}
 @keyframes tprog{to{transform:scaleX(0)}}
 @keyframes toastIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
 @keyframes toastOut{to{opacity:0;transform:translateX(30px)}}
@@ -694,7 +721,7 @@ body.no-motion .mapgroup{opacity:1;transform:none}
         <div><h2><span class="h-ic" style="--mc:var(--cyan)"><span data-ic="layers"></span></span>карты сети</h2><div class="sh-sub" id="mapsSub"></div></div>
       </div>
       <div class="ctrlbar">
-        <label class="csearch"><span data-ic="search"></span><input id="mapSearch" type="text" placeholder="Поиск карты: mirage, sandstone, nuke…" autocomplete="off"></label>
+        <label class="csearch"><span data-ic="search"></span><input id="mapSearch" type="text" placeholder="Поиск карты: mirage, sandstone, seek_town…" autocomplete="off"></label>
         <select class="csel" id="mapSort"><option value="name">По названию</option><option value="players">По онлайну</option><option value="servers">По числу серверов</option></select>
         <button class="cchip sand" id="mapFresh" data-action="map-fresh" data-foc><span data-ic="spark"></span><span class="lbl">новинки</span></button>
         <div class="livebadge"><i></i><span id="mapCount">0</span> КАРТ</div>
@@ -728,6 +755,7 @@ body.no-motion .mapgroup{opacity:1;transform:none}
   <div class="g-head"><span class="mark" id="guideMark"></span><div><b>WONTAKE</b><small>ЦЕНТР УПРАВЛЕНИЯ</small></div></div>
   <div class="g-profile" id="gProfile"></div>
   <div class="g-steamid" id="gSteamId"></div>
+  <div id="gAuthExtra"></div>
   <div class="g-sec">Быстрый доступ</div>
   <button class="g-item" data-action="fav-view" data-foc><span data-ic="star"></span>Избранные серверы</button>
   <button class="g-item" data-action="nav" data-screen="maps" data-foc><span data-ic="layers"></span>Карты сети</button>
@@ -770,7 +798,10 @@ body.no-motion .mapgroup{opacity:1;transform:none}
   <span class="lb-count" id="lbCount"></span>
   <button class="lb-nav lb-close" data-action="lb-close" data-foc data-ic="x" title="Закрыть"></button>
   <button class="lb-nav lb-prev" data-action="lb-prev" data-foc data-ic="back" title="Предыдущая"></button>
-  <img class="lb-img" id="lbImg" alt="">
+  <div class="lb-stage">
+    <div class="lb-ph" id="lbPh"><span id="lbPhName"></span></div>
+    <img class="lb-img" id="lbImg" alt="">
+  </div>
   <button class="lb-nav lb-next" data-action="lb-next" data-foc data-ic="chevR" title="Следующая"></button>
   <div class="lb-bar">
     <div><div class="lb-name" id="lbName"></div><div class="lb-sub" id="lbSub"></div></div>
@@ -798,7 +829,31 @@ body.no-motion .mapgroup{opacity:1;transform:none}
 
 <script>
 'use strict';
-/* ================= ICONS ================= */
+/* ==================== AUTH CAPTURE ==================== */
+const AUTH=(()=>{
+  const out={payload:null,cancelled:false,marker:false};
+  try{
+    const q=new URLSearchParams(location.search);
+    out.marker=q.get('steam')==='return';
+    out.cancelled=q.get('openid.mode')==='cancel';
+    const claimed=q.get('openid.claimed_id')||'';
+    if(claimed||q.get('openid.mode')==='id_res'||out.marker||out.cancelled){
+      const p={};for(const [k,v] of q)p[k]=v;
+      out.payload=p;
+      sessionStorage.setItem('wt_auth_pending',JSON.stringify({p,ts:Date.now()}));
+    }else{
+      const raw=sessionStorage.getItem('wt_auth_pending');
+      if(raw){const rec=JSON.parse(raw);if(rec&&rec.p&&Date.now()-rec.ts<15*60*1000){out.payload=rec.p;out.marker=true;out.cancelled=rec.p['openid.mode']==='cancel'}}
+    }
+  }catch(e){}
+  return out;
+})();
+function authPendingClear(){try{sessionStorage.removeItem('wt_auth_pending')}catch(e){}}
+function authStarted(v){try{if(v===null)sessionStorage.removeItem('wt_auth_started');else sessionStorage.setItem('wt_auth_started',JSON.stringify(v))}catch(e){}}
+function authWasStarted(){try{const r=sessionStorage.getItem('wt_auth_started');if(!r)return null;const v=JSON.parse(r);return Date.now()-v.ts<15*60*1000?v:null}catch(e){return null}}
+function cleanSteamUrl(){try{history.replaceState(null,'',location.pathname+(location.hash||''))}catch(e){}}
+
+/* ==================== ICONS ==================== */
 const S=(inner,sw)=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(sw||2)+'" stroke-linecap="round" stroke-linejoin="round">'+inner+'</svg>';
 const I={
 ghost:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5 0-8.5 3.8-8.5 9v10.2l3-2.2 2.7 2.2 2.8-2.2 2.8 2.2 2.7-2.2 3 2.2V11c0-5.2-3.5-9-8.5-9z"/><circle cx="9.2" cy="11" r="1.7" fill="#04060c"/><circle cx="14.8" cy="11" r="1.7" fill="#04060c"/></svg>',
@@ -811,6 +866,7 @@ bookmark:S('<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>'),
 expand:S('<polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>'),
 external:S('<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>'),
 chevR:S('<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'),
+refresh:S('<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>'),
 bag:S('<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>'),
 book:S('<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>'),
 knife:S('<polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/>'),
@@ -848,7 +904,7 @@ terminal:S('<polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2=
 logout:S('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>'),
 pad:S('<line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/>'),
 globe:S('<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>'),
-snow:S('<line x1="12" y1="2" x2="12" y2="22"/><line x1="4" y1="7" x2="20" y2="17"/><line x1="20" y1="7" x2="4" y2="17"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2"/>')
+shield:S('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>')
 };
 const ic=n=>I[n]||'';
 function hydrateIcons(root){(root||document).querySelectorAll('[data-ic]').forEach(el=>{if(!el.firstChild)el.innerHTML=ic(el.dataset.ic)})}
@@ -868,69 +924,144 @@ function optCenter(root){
 }
 function polish(root){hydrateIcons(root);requestAnimationFrame(()=>optCenter(root))}
 
-/* ================= ASSETS ================= */
-const EXT=['png','jpg','jpeg','webp','PNG','JPG','JPEG','WEBP','jfif','avif','gif'];
-const DIRS=['img/','images/',''];
-function resolveAsset(names){
-  const bases=Array.isArray(names)?names:[names];
-  return new Promise(res=>{
-    const list=[];DIRS.forEach(d=>bases.forEach(n=>EXT.forEach(x=>list.push(d+n+'.'+x))));
-    let i=0;
-    (function next(){
-      if(i>=list.length){res(null);return}
-      const url=list[i++],im=new Image();
-      im.onload=()=>res(url);im.onerror=next;im.src=url;
-    })();
-  });
-}
-const MAPS_LIST=['aim_map','awp_india','awp_lego_2','cs_office','de_ancient','de_anubis','de_dust2','de_inferno','de_mirage','de_mirage_fps','de_mirage_night','de_mirage_winter','de_nuke','de_nuke_chri','de_overpass','de_vertigo','jail_tribute','jb_alcatraz','jb_clouds','jb_snow','sandstone','sandstone_new'];
-const MAP_ALIAS={de_nuke_chri:['de_nuke_chri','de_nuke_christmas','de_nuke_christ','de_nuke_winter']};
-const FRESH_MAPS=['sandstone','sandstone_new','de_nuke_chri'];
-const MAP_IMG={},DONATE_IMG={};
-let ICON_URL=null;
-
-/* ================= DATA ================= */
+/* ==================== DATA ==================== */
 const MODES={
- public:{hex:'#ffb020',icon:'crosshair',max:32,map:'de_mirage',desc:'Классика 5v5: Mirage, Sandstone и зимний Nuke. 128 tick, мгновенный респаун, скины и статистика.',art:'linear-gradient(150deg,#4a3413,#120c05 75%)'},
- awp:{hex:'#38d9ff',icon:'scope',max:20,map:'awp_lego_2',desc:'Только AWP. Один выстрел — один фраг. Lego, India и быстрые дуэли.',art:'linear-gradient(150deg,#0e3348,#060f1c 75%)'},
- jail:{hex:'#ff4d6d',icon:'jail',max:32,map:'jail_tribute',desc:'Jail Break: заключённые против охраны. Мини-игры, бунты и побег.',art:'linear-gradient(150deg,#42141f,#120609 75%)'},
- maniac:{hex:'#ff4dd8',icon:'skull',max:16,map:'aim_map',desc:'Maniac: один против всех. Выживает сильнейший, раунды по 90 секунд.',art:'linear-gradient(150deg,#3a1140,#10051a 75%)'},
- fun:{hex:'#3ce081',icon:'spark',max:32,map:'de_inferno',desc:'Fun-серверы без рамок: все карты, нож-раунды, гравитация и хаос.',art:'linear-gradient(150deg,#0e3a26,#05130c 75%)'}
+ public:{hex:'#ffb020',icon:'crosshair',max:32,map:'de_mirage',desc:'Mirage, Dust FPS, Sandstone, Ancient и зимние версии карт. 128 tick, мгновенный респаун и скины.',art:'linear-gradient(150deg,#4a3413,#120c05 75%)'},
+ awp:{hex:'#38d9ff',icon:'scope',max:20,map:'awp_lego',desc:'Только AWP: Lego, Lego Snow и Cannons. Один выстрел — один фраг.',art:'linear-gradient(150deg,#0e3348,#060f1c 75%)'},
+ jail:{hex:'#ff4d6d',icon:'jail',max:32,map:'jail_tribute',desc:'Jail Break: Tribute, Spy vs Spy, Summer Jail и Moti. Мини-игры, бунты и побег.',art:'linear-gradient(150deg,#42141f,#120609 75%)'},
+ maniac:{hex:'#ff4dd8',icon:'skull',max:16,map:'seek_town',desc:'Maniac на Seek Town, Pool Home и HS Home. Один против всех, раунды по 90 секунд.',art:'linear-gradient(150deg,#3a1140,#10051a 75%)'},
+ fun:{hex:'#3ce081',icon:'spark',max:32,map:'de_mirage',desc:'Fun без рамок: Mirage, Mirage FPS, Dust Snow, Sandstone и зимние версии. Нож-раунды и хаос.',art:'linear-gradient(150deg,#0e3a26,#05130c 75%)'}
 };
 const RAW={
  public:[
   ['45.93.200.183:27015','MIRAGE #1','de_mirage','Москва',25,24],
-  ['45.93.200.183:27016','MIRAGE FPS #2','de_mirage_fps','Москва',17,28],
-  ['185.194.107.196:27315','MIRAGE FPS #5','de_mirage_fps','Москва',9,31],
+  ['45.93.200.183:27016','DUST FPS #2','de_dust_fps','Москва',17,28],
+  ['185.194.107.196:27315','DUST FPS #5','de_dust_fps','Москва',9,31],
   ['92.63.189.130:27018','MIRAGE WINTER #6','de_mirage_winter','Москва',20,18],
-  ['92.63.189.130:27016','MIRAGE CSGO #8','de_mirage','Москва',12,20],
-  ['92.63.189.130:27024','MIRAGE NIGHT #9','de_mirage_night','Москва',9,22],
-  ['45.93.200.198:27016','MIRAGE FPS #10','de_mirage_fps','Москва',1,26],
-  ['185.194.107.196:27315','MIRAGE #11','de_mirage','Новосибирск',13,54],
-  ['92.63.189.130:27015','MIRAGE #13','de_mirage','Москва',4,19],
-  ['45.93.200.238:27015','MIRAGE #14','de_mirage','Санкт-Петербург',12,16],
-  ['185.194.107.201:27017','MIRAGE FPS #15','de_mirage_fps','Санкт-Петербург',6,21],
-  ['45.93.200.244:27016','MIRAGE FPS #16','de_mirage_fps','Москва',7,25],
-  ['82.147.67.184:27016','MIRAGE #22','de_mirage','Москва',10,47],
-  ['45.93.200.86:27015','MIRAGE #24','de_mirage','Москва',1,23],
-  ['45.93.200.96:27016','SANDSTONE #1','sandstone','Москва',16,22],
+  ['92.63.189.130:27016','MIRAGE #8','de_mirage','Москва',12,20],
+  ['92.63.189.130:27024','MIRAGE WINTER #9','de_mirage_winter','Москва',9,22],
+  ['45.93.200.198:27016','MIRAGE #10','de_mirage','Москва',1,26],
+  ['185.194.107.196:27315','MIRAGE FPS #11','de_mirage_fps','Новосибирск',13,54],
+  ['92.63.189.130:27015','DUST SNOW #13','dust_snow','Москва',4,19],
+  ['45.93.200.238:27015','DUST2 #14','de_dust2','Санкт-Петербург',12,16],
+  ['185.194.107.201:27017','DUST FPS #15','de_dust_fps','Санкт-Петербург',6,21],
+  ['45.93.200.244:27016','SANDSTONE SNOW #16','sandstone_snow','Москва',7,25],
+  ['82.147.67.184:27016','SANDSTONE #22','sandstone','Москва',10,47],
+  ['45.93.200.86:27015','ANCIENT #24','de_ancient','Москва',1,23],
+  ['45.93.200.96:27016','SANDSTONE NEW #1','sandstone_new','Москва',16,22],
   ['45.93.200.223:27015','SANDSTONE NEW #2','sandstone_new','Москва',13,20],
   ['45.93.200.209:27015','SANDSTONE #3','sandstone','Санкт-Петербург',11,19],
   ['45.93.200.254:27018','NUKE WINTER #25','de_nuke_chri','Москва',18,26]
  ],
- awp:[['45.93.200.96:27015','AWP LEGO #1','awp_lego_2','Москва',16,21],['92.255.63.83:27315','AWP INDIA #2','awp_india','Москва',13,26],['45.93.200.244:27017','AWP INDIA #3','awp_india','Санкт-Петербург',11,18],['92.63.189.130:27028','AWP LEGO #4','awp_lego_2','Москва',9,23],['87.228.59.101:27015','AWP INDIA #5','awp_india','Москва',14,29],['45.95.31.170:27015','AWP LEGO #6','awp_lego_2','Новосибирск',12,52],['185.194.107.194:28015','AWP LEGO #7','awp_lego_2','Москва',16,24]],
- jail:[['92.63.189.130:27027','JAIL CLOUDS #1','jb_clouds','Москва',12,20],['45.95.31.120:27015','JAIL TRIBUTE #2','jail_tribute','Москва',9,22],['45.95.31.120:27016','JAIL ALCATRAZ #3','jb_alcatraz','Санкт-Петербург',7,17],['45.95.31.120:27017','JAIL SNOW #4','jb_snow','Москва',4,25]],
- maniac:[['45.93.200.95:27015','MANIAC #1','aim_map','Москва',10,19],['185.194.107.201:27016','MANIAC #2','aim_map','Москва',8,24],['92.63.189.130:27020','MANIAC #3','de_mirage','Санкт-Петербург',7,16],['92.63.189.130:27029','MANIAC #4','aim_map','Москва',6,21],['92.63.189.130:27030','MANIAC #5','aim_map','Москва',7,23]],
- fun:[['95.213.255.76:27115','FUN DUST2 #1','de_dust2','Москва',25,22],['85.119.149.215:27915','FUN MIRAGE #2','de_mirage','Москва',25,25],['185.194.107.201:27015','FUN INFERNO #3','de_inferno','Санкт-Петербург',22,18],['45.93.200.198:27017','FUN NUKE #4','de_nuke','Москва',22,24],['62.182.159.104:27115','FUN VERTIGO #5','de_vertigo','Новосибирск',25,55],['45.93.200.209:27016','FUN ANCIENT #6','de_ancient','Москва',28,21],['92.63.189.130:27025','FUN ANUBIS #7','de_anubis','Москва',24,20],['45.93.200.164:27016','FUN OVERPASS #8','de_overpass','Санкт-Петербург',21,17],['185.137.235.124:27215','FUN OFFICE #9','cs_office','Москва',24,26],['45.95.31.168:27016','FUN DUST2 #10','de_dust2','Москва',26,23],['92.63.189.130:27032','FUN MIRAGE #11','de_mirage','Москва',22,19],['45.93.200.95:27017','FUN INFERNO #12','de_inferno','Новосибирск',25,51],['92.63.189.130:27034','FUN NUKE #13','de_nuke','Москва',23,22],['45.95.31.187:27015','FUN VERTIGO #14','de_vertigo','Москва',27,20],['45.95.31.187:27016','FUN ANCIENT #15','de_ancient','Санкт-Петербург',24,16]]
+ awp:[
+  ['45.93.200.96:27015','AWP LEGO #1','awp_lego','Москва',16,21],
+  ['92.255.63.83:27315','AWP LEGO #2','awp_lego','Москва',13,26],
+  ['45.93.200.244:27017','AWP LEGO #3','awp_lego','Санкт-Петербург',11,18],
+  ['92.63.189.130:27028','AWP LEGO #4','awp_lego','Москва',9,23],
+  ['87.228.59.101:27015','AWP LEGO #5','awp_lego','Москва',14,29],
+  ['45.95.31.170:27015','AWP LEGO SNOW #6','awp_lego_snow','Новосибирск',12,52],
+  ['185.194.107.194:28015','AWP CANNONS #7','awp_cannons','Москва',16,24]
+ ],
+ jail:[
+  ['92.63.189.130:27027','JAIL TRIBUTE #1','jail_tribute','Москва',12,20],
+  ['45.95.31.120:27015','JAIL SPY V SPY #2','jb_spy_v_spy','Москва',9,22],
+  ['45.95.31.120:27016','JAIL SUMMER #3','jb_summer_jail','Санкт-Петербург',7,17],
+  ['45.95.31.120:27017','JAIL MOTI #4','jb_moti_second','Москва',4,25]
+ ],
+ maniac:[
+  ['45.93.200.95:27015','MANIAC #1','seek_town','Москва',10,19],
+  ['185.194.107.201:27016','MANIAC #2','seek_town','Москва',8,24],
+  ['92.63.189.130:27020','MANIAC #3','seek_town_minecraft','Санкт-Петербург',7,16],
+  ['92.63.189.130:27029','MANIAC #4','pool_home','Москва',6,21],
+  ['92.63.189.130:27030','MANIAC #5','hs_home','Москва',7,23]
+ ],
+ fun:[
+  ['95.213.255.76:27115','FUN MIRAGE #1','de_mirage','Москва',25,22],
+  ['85.119.149.215:27915','FUN MIRAGE #2','de_mirage','Москва',25,25],
+  ['185.194.107.201:27015','FUN MIRAGE FPS #3','de_mirage_fps','Санкт-Петербург',22,18],
+  ['45.93.200.198:27017','FUN SANDSTONE NEW #4','sandstone_new','Москва',22,24],
+  ['62.182.159.104:27115','FUN DUST2 #5','de_dust2','Новосибирск',25,55],
+  ['45.93.200.209:27016','FUN MIRAGE WINTER #6','de_mirage_winter','Москва',28,21],
+  ['92.63.189.130:27025','FUN DUST SNOW #7','dust_snow','Москва',24,20],
+  ['45.93.200.164:27016','FUN MIRAGE #8','de_mirage','Санкт-Петербург',21,17],
+  ['185.137.235.124:27215','FUN MIRAGE #9','de_mirage','Москва',24,26],
+  ['45.95.31.168:27016','FUN MIRAGE FPS #10','de_mirage_fps','Москва',26,23],
+  ['92.63.189.130:27032','FUN DUST SNOW #11','dust_snow','Москва',22,19],
+  ['45.93.200.95:27017','FUN MIRAGE #12','de_mirage','Новосибирск',25,51],
+  ['92.63.189.130:27034','FUN MIRAGE WINTER #13','de_mirage_winter','Москва',23,22],
+  ['45.95.31.187:27015','FUN SANDSTONE #14','sandstone','Москва',27,20],
+  ['45.95.31.187:27016','FUN MIRAGE FPS #15','de_mirage_fps','Санкт-Петербург',24,16]
+ ]
 };
+const FRESH_MAPS=['sandstone','sandstone_new','sandstone_snow','de_nuke_chri','de_dust_fps','dust_snow'];
 const SERVERS=[];Object.keys(RAW).forEach(m=>RAW[m].forEach((r,i)=>SERVERS.push({sid:m+'-'+i,mode:m,ip:r[0],name:r[1],map:r[2],city:r[3],players:r[4],ping:r[5],max:MODES[m].max,fresh:FRESH_MAPS.includes(r[2])})));
 const bySid=Object.fromEntries(SERVERS.map(s=>[s.sid,s]));
 const NS=SERVERS.length;
-const MAPART={de_mirage:['#8a6a3a','#241708'],de_mirage_fps:['#5a4a9a','#150f33'],de_mirage_winter:['#5a8ab0','#0e1c2c'],de_mirage_night:['#2a2a6a','#08081c'],de_dust2:['#b08a4a','#2c1e0a'],de_inferno:['#a04a22','#260e06'],de_nuke:['#4a7a3a','#0e1c0a'],de_nuke_chri:['#8fb6d6','#0e1a26'],de_vertigo:['#5a7a9a','#101a26'],de_ancient:['#2a6a3a','#08160c'],de_anubis:['#b09030','#2a2008'],de_overpass:['#3a7a7a','#0a1c1c'],cs_office:['#5a6a8a','#10141f'],awp_lego_2:['#2a6ab0','#081426'],awp_india:['#b07028','#2a1808'],jb_clouds:['#6a5a8a','#161022'],jail_tribute:['#7a4a5a','#1c0e14'],jb_alcatraz:['#4a5a6a','#0e141a'],jb_snow:['#7a9ab0','#141e28'],aim_map:['#8a3a3a','#1e0a0a'],sandstone:['#c2a06a','#2a1f0e'],sandstone_new:['#cbb27a','#2e2412']};
+const MAPS_LIST=[...new Set(SERVERS.map(s=>s.map))].sort((a,b)=>a.localeCompare(b));
+const MAP_ALIAS={
+ de_mirage:['de_mirage','mirage'],
+ de_mirage_fps:['de_mirage_fps','mirage_fps'],
+ de_mirage_winter:['de_mirage_winter','mirage_winter'],
+ de_dust2:['de_dust2','dust2','dust_2'],
+ de_dust_fps:['de_dust_fps','dust_fps'],
+ de_ancient:['de_ancient','ancient'],
+ de_nuke_chri:['de_nuke_chri','de_nuke_christmas','de_nuke_winter','nuke_chri'],
+ dust_snow:['dust_snow','de_dust_snow','dust_winter'],
+ sandstone_snow:['sandstone_snow','sandstone_winter'],
+ awp_lego:['awp_lego','awp_lego_2','awp_lego_1'],
+ awp_lego_snow:['awp_lego_snow','awp_lego_winter'],
+ jail_tribute:['jail_tribute','jb_tribute']
+};
+const MAPART={
+ awp_cannons:['#6a5aa0','#141026'],awp_lego:['#2a6ab0','#081426'],awp_lego_snow:['#8fb6d6','#0e1a26'],
+ de_ancient:['#2a6a3a','#08160c'],de_dust2:['#b08a4a','#2c1e0a'],de_dust_fps:['#a07a3a','#241708'],
+ de_mirage:['#8a6a3a','#241708'],de_mirage_fps:['#5a4a9a','#150f33'],de_mirage_winter:['#5a8ab0','#0e1c2c'],de_nuke_chri:['#8fb6d6','#0e1a26'],
+ dust_snow:['#c0b090','#2a2418'],hs_home:['#7a5a4a','#1c1410'],jail_tribute:['#7a4a5a','#1c0e14'],
+ jb_moti_second:['#6a6a7a','#14141c'],jb_spy_v_spy:['#5a6a8a','#10141f'],jb_summer_jail:['#c0a050','#2a2010'],
+ pool_home:['#3a8ab0','#0a1c26'],sandstone:['#c2a06a','#2a1f0e'],sandstone_new:['#cbb27a','#2e2412'],sandstone_snow:['#d8d0c0','#2a2822'],
+ seek_town:['#8a7a5a','#1e1a10'],seek_town_minecraft:['#5a8a4a','#121e0e']
+};
 const mapBg=m=>{const c=MAPART[m]||['#3a3f5a','#0e1120'];return 'radial-gradient(120% 130% at 85% 0%,'+c[0]+'66,transparent 55%),linear-gradient(150deg,'+c[0]+'44,'+c[1]+' 78%)'};
+const MAP_IMG={},DONATE_IMG={};
+let ICON_URL=null;
 const mapUrl=m=>MAP_IMG[m]?("url('"+MAP_IMG[m]+"')"):mapBg(m);
+
+/* ==================== ASSETS ==================== */
+const EXT=['png','jpg','jpeg','webp','PNG','JPG','JPEG','WEBP','jfif','avif','gif'];
+const DIRS=['img/','images/',''];
+function resolveAsset(names,budget){
+  const bases=Array.isArray(names)?names:[names];
+  const list=[];DIRS.forEach(d=>bases.forEach(n=>EXT.forEach(x=>list.push(d+n+'.'+x))));
+  return new Promise(res=>{
+    let i=0,done=false;
+    const finish=v=>{if(done)return;done=true;clearTimeout(timer);res(v)};
+    const timer=setTimeout(()=>finish(null),budget||4000);
+    (function next(){
+      if(done)return;
+      if(i>=list.length){finish(null);return}
+      const url=list[i++],im=new Image();
+      im.onload=()=>finish(url);
+      im.onerror=next;
+      im.src=url;
+    })();
+  });
+}
+function patchMap(m){
+  const url=mapUrl(m);
+  document.querySelectorAll('[data-mapbg="'+m+'"]').forEach(el=>{el.style.backgroundImage=url});
+  if(MAP_IMG[m]){
+    document.querySelectorAll('img[data-mapimg="'+m+'"]').forEach(el=>{
+      if(el.getAttribute('src')!==MAP_IMG[m])el.setAttribute('src',MAP_IMG[m]);
+      el.style.display='block';
+    });
+  }
+  if($('#lightbox').classList.contains('open')&&MAPS_LIST[lbIndex]===m)renderLightbox();
+  if(ambientKey&&AMB[ambientKey]&&AMB[ambientKey].map===m)setAmbient(ambientKey);
+}
+
+/* ==================== STATIC CONTENT ==================== */
 const RULES=[['Читы и стороннее ПО','Любые читы, макросы и скрипты — перманентный бан без обжалования.'],['Оскорбления и токсичность','Уважайте игроков. Травля и разжигание конфликтов — мут от 1 часа до бана.'],['Реклама и спам','Реклама сторонних проектов в чате и голосе — бан на 7 дней.'],['Голосовой чат','Музыка, крики и посторонние звуки — мут. Микрофон по назначению.'],['Баги и эксплойты','Прострелы, застревания, эксплойты карт — бан 3 дня. О багах сообщайте поддержке.'],['Ник и аватар','Оскорбительные ники и реклама в профиле Steam — кик до смены.'],['AFK и слив','Намеренный AFK и помеха команде — кик, при повторе бан на сутки.'],['Решения администрации','Спорные ситуации решаются в поддержке, а не в чате сервера.']];
-const BANS=[['cheater_2007','Читы (WH/Aim)','ANTI-CHEAT','12.11.2026','PERM'],['toxic_kid','Оскорбления','admin·veil','15.11.2026','7 дней'],['spam_bot_x','Реклама в голосе','admin·krx','16.11.2026','3 дня'],['wallhack_ru','Эксплойт de_nuke','admin·veil','17.11.2026','3 дня'],['afk_farmer','Фарм часов / AFK','SYSTEM','18.11.2026','24 часа'],['grief_master','Слив раундов','admin·krx','18.11.2026','48 часов']];
+const BANS=[['cheater_2007','Читы (WH/Aim)','ANTI-CHEAT','12.11.2026','PERM'],['toxic_kid','Оскорбления','admin·veil','15.11.2026','7 дней'],['spam_bot_x','Реклама в голосе','admin·krx','16.11.2026','3 дня'],['wallhack_ru','Эксплойт карты','admin·veil','17.11.2026','3 дня'],['afk_farmer','Фарм часов / AFK','SYSTEM','18.11.2026','24 часа'],['grief_master','Слив раундов','admin·krx','18.11.2026','48 часов']];
 const SKINS=[['AK-47','Asiimov','#ff4dd8','gun'],['AWP','Dragon Lore','#ffb020','scope'],['M4A4','Howl','#ff4d6d','gun'],['Karambit','Fade','#8b5cf6','knife'],['Desert Eagle','Blaze','#ff8a3d','gun'],['USP-S','Kill Confirmed','#38d9ff','gun']];
 const TIERS=[
  {key:'dexer',name:'DEXER',color:'#c9d4ee',price:149,icon:'star',hot:false,features:['Резервный слот на всех серверах','Цветной ник и префикс DEXER','Скины оружия !ws и модельки','Без рекламы в чате']},
@@ -939,19 +1070,28 @@ const TIERS=[
 ];
 const REGIONS=[['Москва','RU-MOW · 12 дата-центров',24],['Санкт-Петербург','RU-SPE · 6 дата-центров',18],['Новосибирск','RU-NVS · 4 дата-центра',52]];
 
-/* ================= STATE ================= */
-const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+/* ==================== STATE ==================== */
+const store={
+  get(k,d){try{const v=localStorage.getItem(k);if(v!=null)return JSON.parse(v)}catch(e){}try{const v=sessionStorage.getItem(k);if(v!=null)return JSON.parse(v)}catch(e){}return d},
+  set(k,v){const s=JSON.stringify(v);try{localStorage.setItem(k,s)}catch(e){}try{sessionStorage.setItem(k,s)}catch(e){}},
+  del(k){try{localStorage.removeItem(k)}catch(e){}try{sessionStorage.removeItem(k)}catch(e){}}
+};
+function validProfile(p){return !!(p&&typeof p.steamid==='string'&&/^7656119\d{10}$/.test(p.steamid))}
 let favOrder=store.get('wt_fav_order',[]).filter(id=>bySid[id]);
 let favs=new Set(favOrder);
-let views=store.get('wt_views',[]);
+let views=store.get('wt_views',[]).filter(v=>v&&(v.mode==='all'||MODES[v.mode]));
 let ui=Object.assign({density:'cozy',cols:'auto',ping:true,maplabel:true},store.get('wt_ui',{}));
-let profile=store.get('wt_profile',null),last=store.get('wt_last',null);
+let profile=store.get('wt_profile',null);
+if(!validProfile(profile))profile=null;
+let last=store.get('wt_last',null);
+if(last&&!bySid[last.sid])last=null;
 let accent=store.get('wt_accent','blue'),soundOn=store.get('wt_sound',true),motionOn=store.get('wt_motion',true);
 let route='home',routeMode='public',fltActive=false,fltFav=false,sortMode='players',query='';
 let mapQuery='',mapSort='name',mapFreshOnly=false;
-let ambientKey=null,ambFlip=false,dragSid=null,lbIndex=0;
+let ambientKey=null,ambFlip=false,dragSid=null,lbIndex=0,authBusy=false;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const initials=n=>String(n||'?').trim().slice(0,2).toUpperCase();
 const modeTotal=m=>SERVERS.filter(s=>s.mode===m).reduce((a,s)=>a+s.players,0);
 const grandTotal=()=>SERVERS.reduce((a,s)=>a+s.players,0);
 const flag=()=>'<svg class="flag" viewBox="0 0 16 11"><rect width="16" height="3.7" fill="#fff"/><rect y="3.7" width="16" height="3.6" fill="#0039a6"/><rect y="7.3" width="16" height="3.7" fill="#d52b1e"/></svg>';
@@ -959,8 +1099,9 @@ const pingCls=p=>p<30?'good':p<50?'mid':'bad';
 const mapServers=m=>SERVERS.filter(s=>s.map===m);
 const modeMaps=m=>[...new Set(SERVERS.filter(s=>s.mode===m).map(s=>s.map))];
 function saveFavs(){favOrder=[...favs];store.set('wt_fav_order',favOrder)}
+function fetchTimeout(url,ms,opts){const c=new AbortController();const t=setTimeout(()=>c.abort(),ms||8000);return fetch(url,Object.assign({signal:c.signal},opts||{})).finally(()=>clearTimeout(t))}
 
-/* ================= SOUND ================= */
+/* ==================== SOUND ==================== */
 let AC=null;
 function sfx(kind){
   if(!soundOn)return;
@@ -976,7 +1117,7 @@ function sfx(kind){
   }catch(e){}
 }
 
-/* ================= TOASTS ================= */
+/* ==================== TOASTS ==================== */
 function toast(msg,type,sub,action){
   type=type||'success';
   const col={success:'var(--green)',info:'var(--accent)',warn:'var(--amber)',error:'var(--red)'}[type];
@@ -987,11 +1128,11 @@ function toast(msg,type,sub,action){
   const kill=()=>{clearTimeout(t);el.classList.add('out');setTimeout(()=>el.remove(),300)};
   el.onclick=e=>{if(e.target.closest('.t-act')&&action){action.fn();kill()}else kill()};
   $('#toasts').appendChild(el);
-  const t=setTimeout(kill,4000);
+  const t=setTimeout(kill,action?6000:4000);
   polish(el);sfx('notify');
 }
 
-/* ================= FOCUS ================= */
+/* ==================== FOCUS ==================== */
 function scopeEl(){
   if($('#lightbox').classList.contains('open'))return $('#lightbox');
   if($('#modalOver').classList.contains('open'))return $('#modalBox');
@@ -1031,18 +1172,15 @@ function moveFocus(dx,dy){
 }
 function activate(){const cur=scopeEl()&&scopeEl().querySelector('.focused');if(cur){sfx('select');flashHint('enter');cur.click()}}
 document.addEventListener('pointerover',e=>{const f=e.target.closest('[data-foc]');if(f)setFocus(f,false,false)});
-function flashHint(k){
-  const el=document.querySelector('.hint[data-hk="'+k+'"]');if(!el)return;
-  el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),200);
-}
+function flashHint(k){const el=document.querySelector('.hint[data-hk="'+k+'"]');if(!el)return;el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),200)}
 
-/* ================= AMBIENT ================= */
+/* ==================== AMBIENT ==================== */
 const AMB={...Object.fromEntries(Object.keys(MODES).map(m=>[m,{hex:MODES[m].hex,art:MODES[m].art,map:MODES[m].map}])),
- all:{hex:'#00a2ff',art:'linear-gradient(150deg,#0e2a4a,#060d1a 75%)',map:null},
+ all:{hex:'#00a2ff',art:'linear-gradient(150deg,#0e2a4a,#060d1a 75%)',map:'de_mirage'},
  maps:{hex:'#38d9ff',art:'linear-gradient(150deg,#0e2a3a,#060d16 75%)',map:'sandstone'},
  shop:{hex:'#ffb020',art:'linear-gradient(150deg,#3a2a10,#0d0906 75%)',donate:'viper'},
- skins:{hex:'#ff4dd8',art:'linear-gradient(150deg,#33103a,#10061a 75%)',map:'de_mirage_night'},
- bans:{hex:'#ff4d6d',art:'linear-gradient(150deg,#3a1220,#120609 75%)',map:'jb_alcatraz'},
+ skins:{hex:'#ff4dd8',art:'linear-gradient(150deg,#33103a,#10061a 75%)',map:'de_mirage_winter'},
+ bans:{hex:'#ff4d6d',art:'linear-gradient(150deg,#3a1220,#120609 75%)',map:'jb_summer_jail'},
  rules:{hex:'#00a2ff',art:'linear-gradient(150deg,#101c33,#060a14 75%)',map:'de_nuke_chri'}};
 function fpConfig(key){
   if(MODES[key]){const M=MODES[key],list=SERVERS.filter(s=>s.mode===key),n=list.length;
@@ -1052,8 +1190,8 @@ function fpConfig(key){
   if(key==='all')return{tag:'библиотека · '+NS+' серверов',title:'все серверы',desc:'Полная библиотека сети WONTAKE: все режимы, карты и города. Фильтры, избранное и поиск.',
     meta:[['users','<b>'+grandTotal()+'</b>&nbsp;онлайн'],['server','<b>'+NS+'</b>&nbsp;серверов'],['layers','<b>'+MAPS_LIST.length+'</b>&nbsp;карт']],
     btns:'<button class="btn-play-big" data-action="all" data-foc>'+ic('grid')+'Открыть список</button>'};
-  if(key==='maps')return{tag:'библиотека · '+MAPS_LIST.length+' карт',title:'карты',desc:'Все карты сети с живыми скриншотами, включая новые Sandstone и зимний Nuke. Откройте карту крупно или найдите её серверы.',
-    meta:[['layers','<b>'+MAPS_LIST.length+'</b>&nbsp;карт'],['spark','<b>'+FRESH_MAPS.length+'</b>&nbsp;новинки'],['server','<b>'+NS+'</b>&nbsp;серверов']],
+  if(key==='maps')return{tag:'библиотека · '+MAPS_LIST.length+' карт',title:'карты',desc:'Все карты сети с живыми скриншотами: Sandstone, Dust FPS, Ancient, Seek Town, Jail и зимние версии. Откройте карту крупно или найдите её серверы.',
+    meta:[['layers','<b>'+MAPS_LIST.length+'</b>&nbsp;карт'],['spark','<b>'+FRESH_MAPS.filter(m=>MAPS_LIST.includes(m)).length+'</b>&nbsp;новинки'],['server','<b>'+NS+'</b>&nbsp;серверов']],
     btns:'<button class="btn-play-big" data-action="nav" data-screen="maps" data-foc>'+ic('layers')+'Открыть карты</button>'};
   if(key==='shop')return{tag:'магазин · привилегии',title:'магазин',desc:'DEXER, PRIMER и VIPER — резервные слоты, скины, ножи, перчатки и турниры на всех серверах сети.',
     meta:[['crown','<b>3</b>&nbsp;тарифа'],['bolt','<b>5 мин</b>&nbsp;активация'],['server','<b>'+NS+'</b>&nbsp;серверов']],
@@ -1085,7 +1223,7 @@ function setAmbient(key){
   polish($('#fpMeta'));polish($('#fpBtns'));
 }
 
-/* ================= HOME ================= */
+/* ==================== HOME ==================== */
 function buildTiles(){
   const tiles=Object.keys(MODES).map(m=>({key:m,amb:m,name:m,icon:MODES[m].icon,hex:MODES[m].hex,map:MODES[m].map,action:'open-mode',mode:m}));
   tiles.push({key:'maps',amb:'maps',name:'карты',icon:'layers',hex:'#38d9ff',util:true,action:'nav',screen:'maps'});
@@ -1094,24 +1232,22 @@ function buildTiles(){
   $('#tiles').innerHTML=tiles.map((t,i)=>{
     const on=MODES[t.key]?'<span class="t-on"><i></i><span data-tileon="'+t.key+'">'+modeTotal(t.key)+'</span></span>':'';
     const attrs=t.action==='open-mode'?'data-action="open-mode" data-mode="'+t.mode+'"':t.action==='nav'?'data-action="nav" data-screen="'+t.screen+'"':'data-action="'+t.action+'"';
-    const url=t.map?MAP_IMG[t.map]:null;
     return '<div class="tile'+(t.util?' util':'')+'" '+attrs+' data-foc data-ambient="'+t.amb+'" style="--tc:'+t.hex+';animation-delay:'+(i*55)+'ms" role="button" tabindex="0">'
       +'<div class="t-fallback">'+ic(t.icon)+'</div>'
-      +(url?'<img alt="" src="'+url+'">':'')
+      +(t.map?'<img alt="" data-mapimg="'+t.map+'"'+(MAP_IMG[t.map]?' src="'+MAP_IMG[t.map]+'"':' style="display:none"')+'>':'')
       +'<div class="t-grad"></div><div class="t-sheen"></div>'+on+'<span class="t-name">'+t.name+'</span></div>';
   }).join('');
   polish($('#tiles'));
 }
 function buildActs(){
   const cont=last&&bySid[last.sid]?bySid[last.sid]:SERVERS.slice().sort((a,b)=>b.players-a.players)[0];
-  const contArt=MAP_IMG[cont.map];
   const favList=favOrder.map(id=>bySid[id]).filter(Boolean);
   const promo=DONATE_IMG.viper||DONATE_IMG.primer||DONATE_IMG.dexer;
   $('#acts').innerHTML=
    '<div class="act" data-action="all" data-foc><span class="a-label">'+ic('users')+'сеть онлайн</span><div class="a-big" id="actOnline">'+grandTotal()+'</div>'
    +'<div class="netbars">'+Object.keys(MODES).map(m=>'<i style="--bc:'+MODES[m].hex+';height:8%" data-bar="'+m+'" title="'+m+'"></i>').join('')+'</div>'
    +'<span class="a-sub">игроков на '+NS+' серверах</span></div>'
-   +'<div class="act continue" data-action="connect" data-sid="'+cont.sid+'" data-foc>'+(contArt?'<div class="a-art" style="background-image:url(\''+contArt+'\')"></div>':'')
+   +'<div class="act continue" data-action="connect" data-sid="'+cont.sid+'" data-foc><div class="a-art" data-mapbg="'+cont.map+'" style="background-image:'+mapUrl(cont.map)+'"></div>'
    +'<div class="a-in"><span class="a-label">'+ic('play')+(last?'продолжить':'рекомендуем')+'</span><b>'+esc(cont.name)+'</b><small>'+esc(cont.map)+' · '+cont.players+'/'+cont.max+'</small>'
    +'<span class="a-play">'+ic('play')+'Подключиться</span></div></div>'
    +'<div class="act promo" data-action="nav" data-screen="shop" data-foc><span class="p-tag">DONATE</span>'
@@ -1128,7 +1264,7 @@ function updateBars(){
   Object.keys(MODES).forEach(m=>{const b=document.querySelector('[data-bar="'+m+'"]');if(b)b.style.height=Math.max(8,Math.round(modeTotal(m)/max*100))+'%'});
 }
 
-/* ================= MAPS ================= */
+/* ==================== MAPS ==================== */
 function mapsFiltered(){
   let l=MAPS_LIST.slice();
   if(mapFreshOnly)l=l.filter(m=>FRESH_MAPS.includes(m));
@@ -1138,34 +1274,42 @@ function mapsFiltered(){
   else l.sort((a,b)=>mapServers(b).length-mapServers(a).length);
   return l;
 }
-function buildMaps(){
+function buildMaps(keepFocus){
+  const sc=scopeEl();
+  const prev=keepFocus&&sc&&sc.querySelector('.mtile.focused')?sc.querySelector('.mtile.focused').dataset.map:null;
   const l=mapsFiltered();
-  $('#mapsSub').textContent=MAPS_LIST.length+' карт · '+NS+' серверов · '+FRESH_MAPS.length+' новинки';
+  $('#mapsSub').textContent=MAPS_LIST.length+' карт · '+NS+' серверов · '+FRESH_MAPS.filter(m=>MAPS_LIST.includes(m)).length+' новинки';
   $('#mapCount').textContent=l.length;
   $('#mapFresh').classList.toggle('on',mapFreshOnly);
   $('#mapsGrid').innerHTML=l.length?l.map((m,i)=>{
     const ss=mapServers(m),pl=ss.reduce((a,s)=>a+s.players,0),fresh=FRESH_MAPS.includes(m);
     return '<div class="mtile" data-action="map-filter" data-map="'+m+'" data-foc style="animation-delay:'+Math.min(i*40,400)+'ms">'
-      +(MAP_IMG[m]?'<img src="'+MAP_IMG[m]+'" alt="'+m+'" loading="lazy">':'<div style="position:absolute;inset:0;background:'+mapBg(m)+'"></div>')
+      +'<div class="m-bg" data-mapbg="'+m+'" style="background-image:'+mapUrl(m)+'"></div>'
+      +'<img alt="'+esc(m)+'" loading="lazy" data-mapimg="'+m+'"'+(MAP_IMG[m]?' src="'+MAP_IMG[m]+'"':' style="display:none"')+'>'
       +'<div class="m-shade"></div>'
       +(fresh?'<span class="m-new">NEW</span>':'')
       +'<button class="sact m-expand" data-action="map-open" data-map="'+m+'" title="Открыть крупно">'+ic('expand')+'</button>'
-      +'<div class="m-body"><div class="m-name">'+m+'</div><div class="m-stats">'
+      +'<div class="m-body"><div class="m-name">'+esc(m)+'</div><div class="m-stats">'
       +'<span class="m-chip">'+ic('server')+ss.length+' серв.</span>'
       +'<span class="m-chip'+(pl?' on':'')+'">'+ic('users')+pl+' онлайн</span>'
       +'</div></div></div>';
   }).join(''):'<div class="empty" style="grid-column:1/-1">'+ic('search')+'<b>Карты не найдены</b><p>Измените запрос или отключите фильтр «новинки».</p><button class="btn-sec" data-action="map-reset" data-foc>Сбросить</button></div>';
   polish($('#mapsGrid'));
+  if(prev){const el=$('#mapsGrid .mtile[data-map="'+prev+'"]');if(el)setFocus(el,false,false)}
 }
 function openLightbox(map){
-  lbIndex=Math.max(0,MAPS_LIST.indexOf(map));renderLightbox();
+  const i=MAPS_LIST.indexOf(map);if(i<0)return;
+  lbIndex=i;renderLightbox();
   $('#lightbox').classList.add('open');
   const f=$('#lightbox .lb-next');if(f)setFocus(f,false,false);
 }
 function renderLightbox(){
-  const m=MAPS_LIST[lbIndex],ss=mapServers(m),pl=ss.reduce((a,s)=>a+s.players,0),fresh=FRESH_MAPS.includes(m);
-  const img=$('#lbImg');
-  if(MAP_IMG[m]){img.src=MAP_IMG[m];img.style.display='block'}else{img.removeAttribute('src');img.style.display='none'}
+  const m=MAPS_LIST[lbIndex];if(!m)return;
+  const ss=mapServers(m),pl=ss.reduce((a,s)=>a+s.players,0),fresh=FRESH_MAPS.includes(m);
+  const img=$('#lbImg'),ph=$('#lbPh');
+  ph.style.backgroundImage=mapUrl(m);
+  $('#lbPhName').textContent=m;
+  if(MAP_IMG[m]){img.src=MAP_IMG[m];img.alt=m;img.style.display='block'}else{img.removeAttribute('src');img.style.display='none'}
   $('#lbName').innerHTML=esc(m)+(fresh?'<span class="lb-new">NEW</span>':'');
   $('#lbSub').textContent=ss.length+' серверов · '+pl+' игроков онлайн · '+ss.map(s=>s.mode).filter((v,i,a)=>a.indexOf(v)===i).join(', ');
   $('#lbCount').textContent=(lbIndex+1)+' / '+MAPS_LIST.length;
@@ -1173,7 +1317,7 @@ function renderLightbox(){
 function lbMove(d){lbIndex=(lbIndex+d+MAPS_LIST.length)%MAPS_LIST.length;renderLightbox();sfx('move')}
 function closeLightbox(){$('#lightbox').classList.remove('open')}
 
-/* ================= SERVERS ================= */
+/* ==================== SERVERS ==================== */
 const NAV=[['home','home','Главная'],['servers','grid','Серверы'],['maps','layers','Карты'],['shop','bag','Магазин'],['rules','book','Правила']];
 function buildNav(){$('#tabsnav').innerHTML=NAV.map(n=>'<button class="tnav" data-action="'+(n[0]==='home'?'home':n[0]==='servers'?'all':'nav')+'" data-screen="'+n[0]+'" data-nav="'+n[0]+'">'+ic(n[1])+n[2]+'</button>').join('');polish($('#tabsnav'))}
 function syncNav(){
@@ -1192,9 +1336,9 @@ function filtered(mode){
 function srvCard(s,i,showMode){
   const M=MODES[s.mode],full=s.players>=s.max,zero=s.players===0,fav=favs.has(s.sid);
   return '<article class="srv" '+(fltFav?'draggable="true" ':'')+'data-action="connect" data-sid="'+s.sid+'" data-foc style="--mc:'+M.hex+';animation-delay:'+Math.min(i*40,360)+'ms">'
-   +'<div class="s-bg" style="background-image:'+mapUrl(s.map)+'"></div><div class="s-shade"></div>'
-   +'<div class="s-top"><div class="s-name">'+(showMode?'<span class="s-mode">'+s.mode+'</span>':'')+'<span class="nm">'+esc(s.name)+'</span>'+(s.fresh?'<span class="s-new">NEW</span>':'')+'</div>'
-   +'<div class="s-topright"><span class="s-map">'+esc(s.map)+'</span>'
+   +'<div class="s-bg" data-mapbg="'+esc(s.map)+'" style="background-image:'+mapUrl(s.map)+'"></div><div class="s-shade"></div>'
+   +'<div class="s-top"><div class="s-name">'+(showMode?'<span class="s-mode">'+s.mode+'</span>':'')+'<span class="nm" title="'+esc(s.name)+'">'+esc(s.name)+'</span>'+(s.fresh?'<span class="s-new">NEW</span>':'')+'</div>'
+   +'<div class="s-topright"><span class="s-map" title="'+esc(s.map)+'">'+esc(s.map)+'</span>'
    +'<button class="sact'+(fav?' faved':'')+'" data-action="fav" data-sid="'+s.sid+'" title="Избранное">'+ic('star')+'</button>'
    +'<button class="sact" data-action="copy" data-sid="'+s.sid+'" title="Копировать IP">'+ic('copy')+'</button></div></div>'
    +'<div class="s-bot"><div class="s-loc">'+flag()+esc(s.city)+'<span class="ping '+pingCls(s.ping)+'">'+ic('signal')+s.ping+' ms</span></div>'
@@ -1205,23 +1349,23 @@ function srvCard(s,i,showMode){
 const revealIO=('IntersectionObserver'in window)?new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');revealIO.unobserve(en.target)}}),{threshold:.05}):null;
 function groupHtml(list,showMode){
   const groups={};list.forEach(s=>{(groups[s.map]=groups[s.map]||[]).push(s)});
-  const keys=Object.keys(groups).sort((a,b)=>(FRESH_MAPS.includes(b)?1:0)-(FRESH_MAPS.includes(a)?1:0));
+  const keys=Object.keys(groups).sort((a,b)=>(FRESH_MAPS.includes(b)?1:0)-(FRESH_MAPS.includes(a)?1:0)||a.localeCompare(b));
   let html='',i=0;
   keys.forEach(map=>{
     const g=groups[map],pl=g.reduce((a,s)=>a+s.players,0),cap=g.reduce((a,s)=>a+s.max,0),fresh=FRESH_MAPS.includes(map);
-    html+='<div class="mapgroup"><div class="mg-head"><span class="mg-thumb" data-action="map-open" data-map="'+esc(map)+'" title="Открыть карту" style="background-image:'+mapUrl(map)+'"></span><div><div class="mg-name">'+esc(map)+(fresh?'<span class="mg-new">NEW</span>':'')+'</div><div class="mg-sub">'+g.length+' серв. · '+pl+' игроков</div></div><div class="mg-line"></div><div class="mg-share"><i style="width:'+Math.round(pl/cap*100)+'%"></i></div></div><div class="sgrid">'+g.map(s=>srvCard(s,i++,showMode)).join('')+'</div></div>';
+    html+='<div class="mapgroup"><div class="mg-head"><span class="mg-thumb" data-action="map-open" data-map="'+esc(map)+'" data-mapbg="'+esc(map)+'" title="Открыть карту" style="background-image:'+mapUrl(map)+'"></span><div><div class="mg-name">'+esc(map)+(fresh?'<span class="mg-new">NEW</span>':'')+'</div><div class="mg-sub">'+g.length+' серв. · '+pl+' игроков</div></div><div class="mg-line"></div><div class="mg-share"><i style="width:'+Math.round(pl/cap*100)+'%"></i></div></div><div class="sgrid">'+g.map(s=>srvCard(s,i++,showMode)).join('')+'</div></div>';
   });
   return html;
 }
 function renderHero(){
   const box=$('#svHero');
   if(route==='all'){
-    box.innerHTML='<div class="modehero" style="--mc:var(--accent)"><div class="mh-bg" style="background-image:'+mapUrl('de_mirage')+'"></div><div class="mh-shade"></div>'
+    box.innerHTML='<div class="modehero" style="--mc:var(--accent)"><div class="mh-bg" data-mapbg="de_mirage" style="background-image:'+mapUrl('de_mirage')+'"></div><div class="mh-shade"></div>'
       +'<div class="mh-in"><span class="mh-ic">'+ic('grid')+'</span><div class="mh-txt"><b>все серверы</b><p>Полная библиотека сети: '+Object.keys(MODES).length+' режимов, '+MAPS_LIST.length+' карт, 3 города</p></div>'
       +'<div class="mh-stats"><span class="mh-chip">'+ic('users')+'<b>'+grandTotal()+'</b>&nbsp;онлайн</span><span class="mh-chip">'+ic('server')+'<b>'+NS+'</b>&nbsp;серверов</span><span class="mh-chip">'+ic('bolt')+'<b>128</b>&nbsp;tick</span></div></div></div>';
   }else{
     const M=MODES[routeMode],list=SERVERS.filter(s=>s.mode===routeMode);
-    box.innerHTML='<div class="modehero" style="--mc:'+M.hex+'"><div class="mh-bg" style="background-image:'+mapUrl(M.map)+'"></div><div class="mh-shade"></div>'
+    box.innerHTML='<div class="modehero" style="--mc:'+M.hex+'"><div class="mh-bg" data-mapbg="'+M.map+'" style="background-image:'+mapUrl(M.map)+'"></div><div class="mh-shade"></div>'
       +'<div class="mh-in"><span class="mh-ic">'+ic(M.icon)+'</span><div class="mh-txt"><b>'+routeMode+'</b><p>'+esc(M.desc)+'</p></div>'
       +'<div class="mh-stats"><span class="mh-chip">'+ic('users')+'<b data-herototal>'+modeTotal(routeMode)+'</b>&nbsp;онлайн</span><span class="mh-chip">'+ic('server')+'<b>'+list.length+'</b>&nbsp;серверов</span><span class="mh-chip">'+ic('layers')+'<b>'+modeMaps(routeMode).length+'</b>&nbsp;карт</span></div></div></div>';
   }
@@ -1230,17 +1374,17 @@ function renderHero(){
 function renderFresh(){
   const box=$('#svFresh');
   const pool=(route==='all'?SERVERS:SERVERS.filter(s=>s.mode===routeMode)).filter(s=>s.fresh);
-  const maps=[...new Set(pool.map(s=>s.map))];
+  const maps=[...new Set(pool.map(s=>s.map))].sort();
   if(!maps.length||query||fltFav){box.innerHTML='';return}
   box.innerHTML='<div class="freshstrip"><span class="fs-label">'+ic('spark')+'новые карты</span>'
-    +maps.map(m=>'<button class="fs-chip" data-action="map-filter" data-map="'+m+'" data-foc><span class="fs-th" style="background-image:'+mapUrl(m)+'"></span>'+m+'<span class="fs-n">NEW</span></button>').join('')
+    +maps.map(m=>'<button class="fs-chip" data-action="map-filter" data-map="'+m+'" data-foc><span class="fs-th" data-mapbg="'+m+'" style="background-image:'+mapUrl(m)+'"></span>'+esc(m)+'<span class="fs-n">NEW</span></button>').join('')
     +'</div>';
   polish(box);
 }
 function renderServers(opts){
   opts=opts||{};
   const mode=route==='all'?'all':routeMode,M=MODES[routeMode],sc=scopeEl();
-  const prevSid=opts.keepFocus&&sc?(sc.querySelector('.srv.focused')?sc.querySelector('.srv.focused').dataset.sid:null):null;
+  const prevSid=opts.keepFocus&&sc&&sc.querySelector('.srv.focused')?sc.querySelector('.srv.focused').dataset.sid:null;
   $('#svTitle').innerHTML=(route==='all'?'<span class="h-ic" style="--mc:var(--accent)">'+ic('grid')+'</span>все серверы':'<span class="h-ic" style="--mc:'+M.hex+'">'+ic(M.icon)+'</span>'+routeMode);
   const list=filtered(mode);
   $('#svSub').textContent=list.length+' серверов · '+list.reduce((a,s)=>a+s.players,0)+' игроков онлайн'+(query?' · фильтр «'+query+'»':'');
@@ -1264,7 +1408,7 @@ function renderServers(opts){
   else if(!opts.keepFocus){const first=root.querySelector('[data-foc]');if(first)setFocus(first,false,false)}
 }
 
-/* ================= SECTIONS ================= */
+/* ==================== SECTIONS ==================== */
 const rendered={};
 function renderSection(name){
   if(rendered[name])return;rendered[name]=true;
@@ -1288,7 +1432,7 @@ function renderBans(q){
   polish($('#banList'));
 }
 
-/* ================= SAVED VIEWS ================= */
+/* ==================== SAVED VIEWS ==================== */
 function renderViews(){
   const box=$('#gViews');
   if(!views.length){box.innerHTML='<div class="g-empty">Сохраняйте комбинации фильтров кнопкой «вид» в панели серверов — они появятся здесь.</div>';return}
@@ -1310,51 +1454,99 @@ function applyView(v){
   toast('Вид применён','info',v.name);
 }
 
-/* ================= STEAM ================= */
-function fetchTimeout(url,ms){const c=new AbortController();const t=setTimeout(()=>c.abort(),ms);return fetch(url,{signal:c.signal}).finally(()=>clearTimeout(t))}
-function cleanSteamUrl(){try{history.replaceState(null,'',location.pathname+location.hash)}catch(e){}}
+/* ==================== STEAM AUTH ==================== */
+function siteBase(){
+  let path=location.pathname.replace(/index\.html?$/i,'');
+  if(!path.endsWith('/'))path=path.replace(/[^/]*$/,'');
+  return location.origin+path;
+}
 function startSteamLogin(){
   if(location.protocol==='file:'){
-    openModal('<div class="mo-head"><span class="mo-ic" style="--mc:#66c0f4">'+ic('steam')+'</span><div><b>Вход через Steam</b><small>Доступен на размещённом сайте</small></div><button class="mo-x" data-action="modal-close">'+ic('x')+'</button></div>'
-    +'<div class="mo-body"><div class="steam-hero"><span class="st-ic">'+ic('steam')+'</span><p>Авторизация выполняется через официальный Steam OpenID и требует, чтобы сайт был открыт по адресу http или https. Откройте размещённую версию WONTAKE — и вход заработает автоматически.</p></div>'
+    openModal('<div class="mo-head"><span class="mo-ic" style="--mc:#66c0f4">'+ic('steam')+'</span><div><b>Вход через Steam</b><small>Нужен адрес http или https</small></div><button class="mo-x" data-action="modal-close">'+ic('x')+'</button></div>'
+    +'<div class="mo-body"><div class="steam-hero"><span class="st-ic">'+ic('steam')+'</span><p>Steam OpenID не принимает адреса вида <b>file://</b>. Откройте сайт по http (локальный сервер) или по https на хостинге — вход выполнится автоматически и профиль сохранится.</p></div>'
     +'<div class="cn-btns" style="justify-content:center"><button class="btn-sec" data-action="modal-close" data-foc>Понятно</button></div></div>','#66c0f4');
     return;
   }
+  const base=siteBase(),returnTo=base+'?steam=return';
+  authStarted({ts:Date.now(),origin:location.origin,returnTo});
   const p=new URLSearchParams({
     'openid.ns':'http://specs.openid.net/auth/2.0','openid.mode':'checkid_setup',
-    'openid.return_to':location.origin+location.pathname+'?steam=return','openid.realm':location.origin+'/',
+    'openid.return_to':returnTo,'openid.realm':base,
     'openid.identity':'http://specs.openid.net/auth/2.0/identifier_select','openid.claimed_id':'http://specs.openid.net/auth/2.0/identifier_select'
   });
   toast('Переходим в Steam…','info','Подтвердите вход на steamcommunity.com');
-  setTimeout(()=>{location.href='https://steamcommunity.com/openid/login?'+p.toString()},450);
+  setTimeout(()=>{location.assign('https://steamcommunity.com/openid/login?'+p.toString())},420);
+}
+function sidFromClaimed(v){const m=String(v||'').match(/(\d{17})\s*$/);return m&&/^7656119\d{10}$/.test(m[1])?m[1]:null}
+async function fetchSteamProfile(sid){
+  let nick=null,avatar=null;
+  try{
+    const r=await fetchTimeout('/api/steam-profile?steamid='+sid,7000);
+    if(r.ok){const j=await r.json();if(j&&j.nick)nick=j.nick;if(j&&j.avatar)avatar=j.avatar}
+  }catch(e){}
+  if(!avatar){
+    const sources=[
+      'https://api.allorigins.win/raw?url='+encodeURIComponent('https://steamcommunity.com/profiles/'+sid+'?xml=1'),
+      'https://corsproxy.io/?'+encodeURIComponent('https://steamcommunity.com/profiles/'+sid+'?xml=1')
+    ];
+    for(const url of sources){
+      try{
+        const txt=await (await fetchTimeout(url,7000)).text();
+        const n=txt.match(/<steamID>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/steamID>/);
+        const a=txt.match(/<avatarFull>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/avatarFull>/);
+        if(n&&n[1]&&n[1].trim())nick=n[1].trim();
+        if(a&&a[1]&&a[1].trim())avatar=a[1].trim();
+        if(nick||avatar)break;
+      }catch(e){}
+    }
+  }
+  return {nick,avatar};
+}
+function applySession(data){
+  profile={steamid:data.steamid,nick:data.nick||('Steam '+data.steamid.slice(-4)),avatar:data.avatar||null,verified:!!data.verified,ts:Date.now()};
+  store.set('wt_profile',profile);
+  authPendingClear();authStarted(null);cleanSteamUrl();
+  renderGuide();
+  toast('Вход через Steam выполнен','success',profile.nick+(profile.verified?' · подпись подтверждена':' · SteamID подтверждён Steam'));
+  if(!profile.verified)setTimeout(()=>toast('Подпись не проверена сервером','warn','Профиль создан по SteamID. Для полной проверки добавьте /api/steam-verify на хостинге.',{label:'Проверить',fn:startSteamLogin}),900);
 }
 async function handleSteamReturn(){
-  const q=new URLSearchParams(location.search),mode=q.get('openid.mode');
-  if(mode==='cancel'){cleanSteamUrl();toast('Вход через Steam отменён','warn');return}
-  if(mode!=='id_res')return;
-  const m=(q.get('openid.claimed_id')||'').match(/(\d{17})$/);
-  if(!m||!/^7656119\d{10}$/.test(m[1])){cleanSteamUrl();toast('Steam не вернул корректный SteamID','error');return}
-  const sid=m[1];let verified=false;
+  if(authBusy)return;
+  const p=AUTH.payload,started=authWasStarted();
+  if(!p){
+    if(started&&!validProfile(profile)){authStarted(null);toast('Steam вернул пустой ответ','warn','Хостинг мог обрезать параметры адреса.',{label:'Повторить',fn:startSteamLogin})}
+    return;
+  }
+  if(AUTH.cancelled||p['openid.mode']==='cancel'){
+    authPendingClear();authStarted(null);cleanSteamUrl();
+    toast('Вход через Steam отменён','warn',null,{label:'Повторить',fn:startSteamLogin});return;
+  }
+  const sid=sidFromClaimed(p['openid.claimed_id']||p['openid.identity']);
+  if(!sid){
+    if(started||AUTH.marker){authPendingClear();authStarted(null);cleanSteamUrl();toast('Steam не вернул SteamID','error','Параметры ответа потерялись при переходе.',{label:'Повторить',fn:startSteamLogin})}
+    return;
+  }
+  authBusy=true;renderGuide();
+  let data=null;
   try{
-    const check=new URLSearchParams();
-    for(const [k,v] of q)if(k.startsWith('openid.'))check.set(k,v);
-    check.set('openid.mode','check_authentication');
-    const r=await fetchTimeout('https://api.allorigins.win/raw?url='+encodeURIComponent('https://steamcommunity.com/openid/login?'+check.toString()),8000);
-    verified=/is_valid\s*:\s*true/i.test(await r.text());
+    const r=await fetchTimeout('/api/steam-verify',12000,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});
+    if(r.ok){const j=await r.json().catch(()=>null);if(j&&sidFromClaimed(j.steamid))data={steamid:j.steamid,nick:j.nick,avatar:j.avatar,verified:true}}
   }catch(e){}
-  let nick='Steam '+sid.slice(-4),avatar=null;
-  try{
-    const r=await fetchTimeout('https://api.allorigins.win/raw?url='+encodeURIComponent('https://steamcommunity.com/profiles/'+sid+'?xml=1'),8000);
-    const xml=new DOMParser().parseFromString(await r.text(),'text/xml');
-    const n=xml.querySelector('steamID');if(n&&n.textContent)nick=n.textContent;
-    const a=xml.querySelector('avatarFull');if(a&&a.textContent)avatar=a.textContent;
-  }catch(e){}
-  profile={steamid:sid,nick,avatar,verified,ts:Date.now()};
-  store.set('wt_profile',profile);cleanSteamUrl();renderGuide();
-  toast('Вход через Steam выполнен','success',nick);
+  if(!data){const prof=await fetchSteamProfile(sid);data={steamid:sid,nick:prof.nick,avatar:prof.avatar,verified:false}}
+  authBusy=false;
+  applySession(data);
+}
+async function refreshSteamProfile(){
+  if(!validProfile(profile)){startSteamLogin();return}
+  toast('Обновляем профиль Steam…','info',profile.steamid);
+  const prof=await fetchSteamProfile(profile.steamid);
+  if(prof.nick)profile.nick=prof.nick;
+  if(prof.avatar)profile.avatar=prof.avatar;
+  store.set('wt_profile',profile);renderGuide();
+  toast('Профиль обновлён','success',profile.nick);
 }
 
-/* ================= ROUTER ================= */
+/* ==================== ROUTER ==================== */
 function navigate(h){location.hash=h}
 function applyRoute(){
   const h=location.hash.replace('#',''),parts=h.split('/');
@@ -1366,7 +1558,7 @@ function applyRoute(){
   document.body.classList.toggle('sub',route!=='home');
   if(route==='home'){$('#scr-home').classList.add('on');setAmbient(ambientKey&&AMB[ambientKey]?ambientKey:'public');const f=$('#tiles .tile');if(f)setFocus(f,false,false)}
   else if(route==='servers'||route==='all'){$('#scr-servers').classList.add('on');setAmbient(route==='all'?'all':routeMode);renderServers({animate:true})}
-  else if(route==='maps'){$('#scr-maps').classList.add('on');setAmbient('maps');buildMaps();const f=$('#mapsGrid [data-foc]');if(f)setFocus(f,false,false)}
+  else if(route==='maps'){$('#scr-maps').classList.add('on');setAmbient('maps');buildMaps(false);const f=$('#mapsGrid [data-foc]');if(f)setFocus(f,false,false)}
   else{$('#scr-'+route).classList.add('on');if(AMB[route])setAmbient(route);renderSection(route);const f=$('#scr-'+route+' [data-foc]');if(f)setFocus(f,false,false)}
   syncNav();
   const scr=$('#scr-'+(route==='servers'||route==='all'?'servers':route));if(scr)scr.scrollTop=0;
@@ -1374,12 +1566,13 @@ function applyRoute(){
 }
 window.addEventListener('hashchange',applyRoute);
 
-/* ================= DIALOGS ================= */
+/* ==================== DIALOGS ==================== */
 function openModal(html,mc){const b=$('#modalBox');b.style.setProperty('--mc',mc||'var(--accent)');b.innerHTML=html;$('#modalOver').classList.add('open');polish(b);const f=b.querySelector('[data-foc]');if(f)setFocus(f,false,false)}
 function closeModal(){$('#modalOver').classList.remove('open')}
 function connectModal(sid){
-  const s=bySid[sid],M=MODES[s.mode],fav=favs.has(sid);
-  openModal('<div class="mo-banner" data-action="map-open" data-map="'+esc(s.map)+'" title="Открыть карту крупно" style="background-image:'+mapUrl(s.map)+'"></div>'
+  const s=bySid[sid];if(!s)return;
+  const M=MODES[s.mode],fav=favs.has(sid);
+  openModal('<div class="mo-banner" data-action="map-open" data-map="'+esc(s.map)+'" data-mapbg="'+esc(s.map)+'" title="Открыть карту крупно" style="background-image:'+mapUrl(s.map)+'"></div>'
   +'<div class="mo-head"><span class="mo-ic">'+ic(M.icon)+'</span><div><b>'+esc(s.name)+'</b><small>'+esc(s.map)+' · '+esc(s.city)+'</small></div><button class="mo-x" data-action="modal-close">'+ic('x')+'</button></div>'
   +'<div class="mo-body"><div class="cn-meta"><span class="cn-chip">'+ic('users')+s.players+' / '+s.max+'</span><span class="cn-chip">'+ic('signal')+s.ping+' ms</span><span class="cn-chip">'+ic('bolt')+'128 tick</span>'+(s.fresh?'<span class="cn-chip" style="color:var(--sand)">'+ic('spark')+'новая карта</span>':'')+'</div>'
   +'<div class="cn-ip"><code>'+esc(s.ip)+'</code><button class="sact" data-action="copy-ip" data-ip="'+esc(s.ip)+'">'+ic('copy')+'</button></div>'
@@ -1396,24 +1589,24 @@ function netModal(){
 }
 function infoDialog(doc){
   const priv=doc==='privacy';
-  const rows=priv?[['Данные','SteamID, ник и аватар из публичного профиля Steam. Платёжные данные не хранятся на сайте.'],['Вход','Авторизация через официальный Steam OpenID (steamcommunity.com).'],['Локально','Избранное, сохранённые виды и настройки хранятся только в вашем браузере.'],['Удаление','Выйдите из профиля или сбросьте настройки в меню — данные удалятся с устройства.']]:[['Предмет','Доступ к серверам и цифровым привилегиям DEXER/PRIMER/VIPER на условиях предоплаты.'],['Срок','Активация за 5 минут, действие 30 дней на всех серверах сети.'],['Возврат','В течение 24 часов, если привилегия не активирована по технической причине.'],['Нарушения','При перманентном бане за читы стоимость привилегий не возвращается.']];
+  const rows=priv?[['Данные','SteamID, ник и аватар из публичного профиля Steam. Платёжные данные не хранятся на сайте.'],['Вход','Авторизация через официальный Steam OpenID (steamcommunity.com).'],['Локально','Сессия, избранное, виды и настройки хранятся в вашем браузере.'],['Удаление','Выйдите из профиля или сбросьте настройки в меню — данные удалятся с устройства.']]:[['Предмет','Доступ к серверам и цифровым привилегиям DEXER/PRIMER/VIPER на условиях предоплаты.'],['Срок','Активация за 5 минут, действие 30 дней на всех серверах сети.'],['Возврат','В течение 24 часов, если привилегия не активирована по технической причине.'],['Нарушения','При перманентном бане за читы стоимость привилегий не возвращается.']];
   openModal('<div class="mo-head"><span class="mo-ic">'+ic(priv?'book':'info')+'</span><div><b>'+(priv?'Политика конфиденциальности':'Договор оферты')+'</b><small>WONTAKE · редакция 01.01.2026</small></div><button class="mo-x" data-action="modal-close">'+ic('x')+'</button></div>'
   +'<div class="mo-body"><div class="rules">'+rows.map((r,i)=>'<div class="rule"><span class="n">'+String(i+1).padStart(2,'0')+'</span><div><b>'+r[0]+'</b><p>'+r[1]+'</p></div></div>').join('')+'</div></div>');
 }
 
-/* ================= SEARCH ================= */
+/* ==================== SEARCH ==================== */
 function openSearch(){$('#searchOver').classList.add('open');$('#globalSearch').value='';renderSearch('');setTimeout(()=>$('#globalSearch').focus(),120)}
 function closeSearch(){$('#searchOver').classList.remove('open')}
 function renderSearch(q){
   const box=$('#searchResults');
-  if(!q.trim()){box.innerHTML='<div class="sb-hint">Поиск по '+NS+' серверам и '+MAPS_LIST.length+' картам.<div class="keys"><span>sandstone</span><span>nuke_chri</span><span>mirage</span><span>45.93.200</span></div></div>';return}
+  if(!q.trim()){box.innerHTML='<div class="sb-hint">Поиск по '+NS+' серверам и '+MAPS_LIST.length+' картам.<div class="keys"><span>sandstone</span><span>seek_town</span><span>de_ancient</span><span>45.93.200</span></div></div>';return}
   const ql=q.toLowerCase();
   const maps=MAPS_LIST.filter(m=>m.includes(ql)).slice(0,4);
   const res=SERVERS.filter(s=>s.name.toLowerCase().includes(ql)||s.map.includes(ql)||s.ip.includes(ql)||s.city.toLowerCase().includes(ql)||s.mode.includes(ql)).slice(0,10);
   if(!maps.length&&!res.length){box.innerHTML='<div class="sb-hint">Ничего не найдено по «'+esc(q)+'»</div>';return}
   let html='';
-  if(maps.length)html+='<div class="sb-sec">Карты</div>'+maps.map(m=>{const ss=mapServers(m);return '<div class="sres" data-action="map-open" data-map="'+m+'" data-foc style="--mc:var(--cyan)"><span class="sr-ic">'+(MAP_IMG[m]?'<img src="'+MAP_IMG[m]+'" alt="">':ic('layers'))+'</span><div><b>'+m+(FRESH_MAPS.includes(m)?' · NEW':'')+'</b><small>'+ss.length+' серверов · '+ss.reduce((a,s)=>a+s.players,0)+' онлайн</small></div><span class="sr-right"><span class="sr-mode">карта</span></span></div>'}).join('');
-  if(res.length)html+='<div class="sb-sec">Серверы</div>'+res.map(s=>'<div class="sres" data-action="search-pick" data-sid="'+s.sid+'" data-foc style="--mc:'+MODES[s.mode].hex+'"><span class="sr-ic">'+(MAP_IMG[s.map]?'<img src="'+MAP_IMG[s.map]+'" alt="">':ic(MODES[s.mode].icon))+'</span><div><b>'+esc(s.name)+'</b><small>'+esc(s.map)+' · '+esc(s.ip)+'</small></div><span class="sr-right"><span class="sr-pl">'+s.players+'/'+s.max+'</span><span class="sr-mode">'+s.mode+'</span></span></div>').join('');
+  if(maps.length)html+='<div class="sb-sec">Карты</div>'+maps.map(m=>{const ss=mapServers(m);return '<div class="sres" data-action="map-open" data-map="'+m+'" data-foc style="--mc:var(--cyan)"><span class="sr-ic" data-mapbg="'+m+'" style="background-image:'+mapUrl(m)+'"><img alt="" data-mapimg="'+m+'"'+(MAP_IMG[m]?' src="'+MAP_IMG[m]+'"':' style="display:none"')+'></span><div class="sr-tx"><b>'+esc(m)+(FRESH_MAPS.includes(m)?' · NEW':'')+'</b><small>'+ss.length+' серверов · '+ss.reduce((a,s)=>a+s.players,0)+' онлайн</small></div><span class="sr-right"><span class="sr-mode">карта</span></span></div>'}).join('');
+  if(res.length)html+='<div class="sb-sec">Серверы</div>'+res.map(s=>'<div class="sres" data-action="search-pick" data-sid="'+s.sid+'" data-foc style="--mc:'+MODES[s.mode].hex+'"><span class="sr-ic" data-mapbg="'+esc(s.map)+'" style="background-image:'+mapUrl(s.map)+'"><img alt="" data-mapimg="'+esc(s.map)+'"'+(MAP_IMG[s.map]?' src="'+MAP_IMG[s.map]+'"':' style="display:none"')+'></span><div class="sr-tx"><b>'+esc(s.name)+'</b><small>'+esc(s.map)+' · '+esc(s.ip)+'</small></div><span class="sr-right"><span class="sr-pl">'+s.players+'/'+s.max+'</span><span class="sr-mode">'+s.mode+'</span></span></div>').join('');
   box.innerHTML=html;polish(box);
   const f=box.querySelector('[data-foc]');if(f)setFocus(f,false,false);
 }
@@ -1424,22 +1617,39 @@ function searchMove(d){
   setFocus(items[i],true);
 }
 
-/* ================= MENU ================= */
+/* ==================== MENU / SESSION ==================== */
 function openGuide(){closeModal();closeSearch();closeChat();closeLightbox();$('#guide').classList.add('open');$('#guideScrim').classList.add('open');renderViews();const f=$('#guide [data-foc]');if(f)setFocus(f,false,false)}
 function closeGuide(){$('#guide').classList.remove('open');$('#guideScrim').classList.remove('open')}
+function avatarMarkup(cls){
+  const ghost=ICON_URL?'<img src="'+ICON_URL+'" alt="" onerror="this.style.display=\'none\'">':ic('ghost');
+  if(!validProfile(profile))return ghost;
+  return '<span class="'+cls+'">'+esc(initials(profile.nick))+'</span>'
+    +(profile.avatar?'<img src="'+profile.avatar+'" alt="" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'">':'');
+}
 function renderGuide(){
-  const ghost=ICON_URL?'<img src="'+ICON_URL+'" alt="">':ic('ghost');
-  if(profile){
-    const av=profile.avatar?'<img src="'+profile.avatar+'" alt="">':ghost;
-    $('#gProfile').innerHTML='<span class="av">'+av+'</span><div><b>'+esc(profile.nick)+'</b><small>STEAM OPENID'+(profile.verified?' · ПОДТВЕРЖДЕНО':'')+'</small></div>'
-      +'<span class="g-pacts"><a class="sact" href="https://steamcommunity.com/profiles/'+profile.steamid+'" target="_blank" rel="noopener" title="Профиль Steam">'+ic('external')+'</a><button class="sact" data-action="logout" title="Выйти">'+ic('logout')+'</button></span>';
+  const box=$('#gProfile'),av=$('#avatarBtn'),extra=$('#gAuthExtra');
+  const authed=validProfile(profile);
+  box.classList.toggle('authed',authed);
+  av.classList.toggle('authed',authed);
+  av.innerHTML=avatarMarkup('av-in')+(authed?'<span class="av-dot"></span>':'');
+  av.title=authed?('Профиль · '+profile.nick):'Профиль · гость';
+  if(authed){
+    box.innerHTML='<span class="av">'+avatarMarkup('av-in')+'</span>'
+      +'<div class="g-txt"><b>'+esc(profile.nick)+'</b><small><span class="sd'+(profile.verified?'':' warn')+'"></span>'+(profile.verified?'STEAM · ПОДТВЕРЖДЕНО':'STEAM · ID ПОЛУЧЕН')+'</small></div>'
+      +'<span class="g-pacts">'
+      +'<button class="sact" data-action="steam-refresh" title="Обновить профиль">'+ic('refresh')+'</button>'
+      +'<a class="sact" href="https://steamcommunity.com/profiles/'+profile.steamid+'" target="_blank" rel="noopener" title="Профиль Steam">'+ic('external')+'</a>'
+      +'<button class="sact" data-action="logout" title="Выйти">'+ic('logout')+'</button></span>';
     $('#gSteamId').innerHTML='<span>'+profile.steamid+'</span><button data-action="copy-steamid" title="Копировать SteamID">'+ic('copy')+'</button>';
+    extra.innerHTML=profile.verified?'':'<button class="g-item" data-action="steam-open" data-foc style="color:var(--amber)">'+ic('shield')+'Подтвердить вход через Steam</button>';
   }else{
-    $('#gProfile').innerHTML='<span class="av">'+ghost+'</span><div><b>Гость</b><small style="color:var(--muted)">войдите через Steam</small></div><span class="g-pacts"><button class="btn-sec" data-action="steam-open" style="padding:9px 14px">'+ic('steam')+'Войти</button></span>';
+    const ghost=ICON_URL?'<img src="'+ICON_URL+'" alt="" onerror="this.style.display=\'none\'">':ic('ghost');
+    box.innerHTML='<span class="av">'+ghost+'</span><div class="g-txt"><b>Гость</b><small style="color:var(--muted)"><span class="sd warn"></span>ВХОД НЕ ВЫПОЛНЕН</small></div>'
+      +'<span class="g-pacts"><button class="btn-sec" data-action="steam-open" style="padding:9px 14px">'+ic('steam')+'Войти</button></span>';
     $('#gSteamId').innerHTML='<span>Официальный Steam OpenID · без пароля</span>';
+    extra.innerHTML=authBusy?'<div class="auth-progress"><span class="spin"></span><div><b>Завершаем вход…</b><small>Проверяем ответ Steam</small></div></div>':'';
   }
-  $('#avatarBtn').innerHTML=profile&&profile.avatar?'<img src="'+profile.avatar+'" alt="">':ghost;
-  $('#chatAv').innerHTML=profile&&profile.avatar?'<img src="'+profile.avatar+'" alt="">':'WT';
+  $('#chatAv').innerHTML=authed&&profile.avatar?'<img src="'+profile.avatar+'" alt="" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'">':'WT';
   document.querySelectorAll('#gAccent button').forEach(b=>b.classList.toggle('on',b.dataset.accent===accent));
   $('#tgSound').classList.toggle('on',soundOn);
   $('#tgMotion').classList.toggle('on',motionOn);
@@ -1466,8 +1676,14 @@ function applySettings(){
 function renderHints(){
   $('#hints').innerHTML='<span class="hint" data-hk="enter"><i class="kb">Enter</i>Выбрать</span><span class="hint" data-hk="esc"><i class="kb">Esc</i>Назад</span><span class="hint" data-hk="slash"><i class="kb">/</i>Поиск</span><span class="hint" data-hk="g"><i class="kb">G</i>Меню</span>';
 }
+function applyBrand(){
+  const mark=ICON_URL?'<img src="'+ICON_URL+'" alt="WONTAKE">':ic('ghost');
+  $('#brandMark').innerHTML=mark;$('#guideMark').innerHTML=mark;$('#bootMark').innerHTML=mark;
+  if(ICON_URL)$('#fav').href=ICON_URL;
+  polish($('.topbar'));
+}
 
-/* ================= CHAT ================= */
+/* ==================== CHAT ==================== */
 let chatStarted=false;
 function addMsg(html,who){const el=document.createElement('div');el.className='msg '+who;el.innerHTML=html;$('#chatMsgs').appendChild(el);$('#chatMsgs').scrollTop=$('#chatMsgs').scrollHeight}
 function botReply(q){
@@ -1476,17 +1692,18 @@ function botReply(q){
   if(/подключ|connect|зайти|играть/.test(ql))a='Откройте консоль клавишей <code>~</code> и введите <code>connect IP:PORT</code>. IP указан на карточке сервера. Либо нажмите Play — Steam запустится и подключится сам.';
   else if(/бан/.test(ql))a='Причина и срок наказания видны в разделе «Блокировки». Если бан выдан ошибочно — напишите ваш SteamID и ник, администратор проверит демо в течение суток.';
   else if(/dexer|primer|viper|vip|донат|куп|магазин|привилег/.test(ql))a='В магазине три привилегии: DEXER — 149 ₽, PRIMER — 299 ₽, VIPER — 549 ₽ в месяц. Выдаются автоматически за 5 минут на все '+NS+' серверов. Статус в игре — команда <code>!vip</code>.';
+  else if(/вход|гость|steam|войти|профил|автор/.test(ql))a='Вход идёт через официальный Steam OpenID. Нажмите «Войти» в меню, подтвердите на steamcommunity.com — вернётесь уже с ником и аватаром. Если после возврата снова «Гость», нажмите «Войти» ещё раз: сайт мог быть открыт по адресу file:// или хостинг обрезал параметры.';
   else if(/скин|ws|нож|перчат/.test(ql))a='На всех серверах работают <code>!ws</code> (скины оружия), <code>!knife</code> (ножи) и <code>!gloves</code> (перчатки). Бесплатно.';
-  else if(/sandstone|nuke|нов|карт/.test(ql))a='Новые карты уже в сети: <code>sandstone</code>, <code>sandstone_new</code> и зимний <code>de_nuke_chri</code> в режиме PUBLIC. Найти их можно в разделе «Карты» по фильтру «новинки».';
+  else if(/sandstone|seek|jail|dust|nuke|ancient|lego|нов|карт/.test(ql))a='Актуальные карты: Mirage и Mirage FPS, Dust FPS и Dust Snow, Sandstone / New / Snow, Ancient, зимний Nuke, AWP Lego (одна карта на все Lego-серверы), Lego Snow и Cannons, Seek Town и Minecraft-версия, Pool Home, HS Home, Jail Tribute, Spy vs Spy, Summer Jail и Moti. Все они — в разделе «Карты».';
   else if(/пинг|лаг|тормоз/.test(ql))a='Выбирайте сервер в своём городе и FPS-версии карт — задержка указана на каждой карточке. Москва, Санкт-Петербург и Новосибирск.';
-  else a='Принял! Передаю вопрос администратору — ответим здесь в течение пары минут. Могу помочь с подключением, баном, привилегиями или скинами.';
+  else a='Принял! Передаю вопрос администратору — ответим здесь в течение пары минут. Могу помочь с подключением, входом, баном, привилегиями или скинами.';
   setTimeout(()=>{ty.remove();addMsg(a,'bot')},motionOn?800+Math.random()*500:100);
 }
 function sendChat(t){if(!t.trim())return;addMsg(esc(t),'me');$('#chatInput').value='';botReply(t)}
-function openChat(){$('#chatPanel').classList.add('open');if(!chatStarted){chatStarted=true;addMsg('Здравствуйте! Помогу с подключением, баном, привилегиями и скинами. Напишите вопрос.','bot')}setTimeout(()=>$('#chatInput').focus(),250)}
+function openChat(){$('#chatPanel').classList.add('open');if(!chatStarted){chatStarted=true;addMsg('Здравствуйте! Помогу с подключением, входом через Steam, баном, привилегиями и скинами. Напишите вопрос.','bot')}setTimeout(()=>$('#chatInput').focus(),250)}
 function closeChat(){$('#chatPanel').classList.remove('open')}
 
-/* ================= LIVE ================= */
+/* ==================== LIVE ==================== */
 function refreshLive(changed){
   $('#chipOnline').textContent=grandTotal();
   const ao=$('#actOnline');if(ao)ao.textContent=grandTotal();
@@ -1524,14 +1741,14 @@ function countUp(el,to,dur){
   (function step(t){const p=Math.min((t-t0)/dur,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)})(t0);
 }
 
-/* ================= HELPERS ================= */
+/* ==================== HELPERS ==================== */
 function copyText(t,msg,sub){
   const ok=()=>toast(msg,'success',sub);
   const fb=()=>{const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){toast('Не удалось скопировать','error')}ta.remove()};
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok).catch(fb);else fb();
 }
 function toggleFav(sid,fromModal){
-  const s=bySid[sid];
+  const s=bySid[sid];if(!s)return;
   if(favs.has(sid)){
     favs.delete(sid);saveFavs();
     toast('Убрано из избранного','info',s.name,{label:'Вернуть',fn:()=>{favs.add(sid);saveFavs();buildActs();if(route==='servers'||route==='all')renderServers({keepFocus:true,animate:false});if(fromModal)connectModal(sid)}});
@@ -1548,7 +1765,7 @@ function filterByMap(m){
   toast('Фильтр по карте','info',m);
 }
 
-/* ================= EVENTS ================= */
+/* ==================== EVENTS ==================== */
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-action]');if(!t)return;
   const a=t.dataset.action;
@@ -1557,13 +1774,13 @@ document.addEventListener('click',e=>{
   else if(a==='all')navigate('all');
   else if(a==='nav'){closeGuide();navigate(t.dataset.screen)}
   else if(a==='connect')connectModal(t.dataset.sid);
-  else if(a==='copy'){e.stopPropagation();const s=bySid[t.dataset.sid];copyText(s.ip,'IP скопирован',s.ip);t.classList.add('ok');t.innerHTML=ic('check');optCenter(t);setTimeout(()=>{t.classList.remove('ok');t.innerHTML=ic('copy');optCenter(t)},1400)}
+  else if(a==='copy'){e.stopPropagation();const s=bySid[t.dataset.sid];if(!s)return;copyText(s.ip,'IP скопирован',s.ip);t.classList.add('ok');t.innerHTML=ic('check');optCenter(t);setTimeout(()=>{t.classList.remove('ok');t.innerHTML=ic('copy');optCenter(t)},1400)}
   else if(a==='fav'){e.stopPropagation();toggleFav(t.dataset.sid,false)}
   else if(a==='fav-modal'){e.stopPropagation();toggleFav(t.dataset.sid,true)}
-  else if(a==='steam-connect'){const s=bySid[t.dataset.sid];last={sid:s.sid,ts:Date.now()};store.set('wt_last',last);buildActs();try{window.location.href='steam://connect/'+s.ip}catch(err){}toast('Запускаем Steam…','info','Если игра не открылась — скопируйте connect-команду')}
+  else if(a==='steam-connect'){const s=bySid[t.dataset.sid];if(!s)return;last={sid:s.sid,ts:Date.now()};store.set('wt_last',last);buildActs();try{window.location.href='steam://connect/'+s.ip}catch(err){}toast('Запускаем Steam…','info','Если игра не открылась — скопируйте connect-команду')}
   else if(a==='copy-cmd')copyText('connect '+t.dataset.ip,'Команда скопирована','connect '+t.dataset.ip);
   else if(a==='copy-ip')copyText(t.dataset.ip,'IP скопирован',t.dataset.ip);
-  else if(a==='copy-steamid')copyText(profile.steamid,'SteamID скопирован',profile.steamid);
+  else if(a==='copy-steamid'&&validProfile(profile))copyText(profile.steamid,'SteamID скопирован',profile.steamid);
   else if(a==='modal-close')closeModal();
   else if(a==='net')netModal();
   else if(a==='buy'){openChat();sendChat('Хочу купить '+t.dataset.tier)}
@@ -1571,15 +1788,16 @@ document.addEventListener('click',e=>{
   else if(a==='search-pick'){closeSearch();connectModal(t.dataset.sid)}
   else if(a==='map-open'){e.stopPropagation();openLightbox(t.dataset.map)}
   else if(a==='map-filter'){e.stopPropagation();filterByMap(t.dataset.map)}
-  else if(a==='map-fresh'){mapFreshOnly=!mapFreshOnly;buildMaps();sfx('move')}
-  else if(a==='map-reset'){mapFreshOnly=false;mapQuery='';$('#mapSearch').value='';buildMaps()}
+  else if(a==='map-fresh'){mapFreshOnly=!mapFreshOnly;buildMaps(false);sfx('move');const f=$('#mapsGrid [data-foc]');if(f)setFocus(f,false,false)}
+  else if(a==='map-reset'){mapFreshOnly=false;mapQuery='';$('#mapSearch').value='';buildMaps(false)}
   else if(a==='lb-close')closeLightbox();
   else if(a==='lb-prev')lbMove(-1);
   else if(a==='lb-next')lbMove(1);
   else if(a==='lb-copy')copyText(MAPS_LIST[lbIndex],'Имя карты скопировано',MAPS_LIST[lbIndex]);
   else if(a==='lb-servers')filterByMap(MAPS_LIST[lbIndex]);
   else if(a==='steam-open')startSteamLogin();
-  else if(a==='logout'){profile=null;store.set('wt_profile',null);renderGuide();toast('Вы вышли из профиля','info')}
+  else if(a==='steam-refresh')refreshSteamProfile();
+  else if(a==='logout'){profile=null;store.del('wt_profile');authPendingClear();authStarted(null);renderGuide();toast('Вы вышли из профиля','info',null,{label:'Войти снова',fn:startSteamLogin})}
   else if(a==='fav-view'){closeGuide();fltFav=true;$('#fltFav').classList.add('on');navigate('all');if(route==='all')renderServers({animate:false})}
   else if(a==='flt-active'){fltActive=!fltActive;t.classList.toggle('on',fltActive);renderServers({keepFocus:true,animate:false})}
   else if(a==='flt-fav'){fltFav=!fltFav;t.classList.toggle('on',fltFav);renderServers({keepFocus:true,animate:false})}
@@ -1605,7 +1823,8 @@ document.addEventListener('click',e=>{
   else if(a==='tg-sound'){soundOn=!soundOn;applySettings();if(soundOn)sfx('select');toast(soundOn?'Звук включён':'Звук выключен','info')}
   else if(a==='tg-motion'){motionOn=!motionOn;applySettings();toast(motionOn?'Анимации включены':'Анимации выключены','info')}
   else if(a==='reset'){
-    ['wt_fav_order','wt_profile','wt_last','wt_accent','wt_sound','wt_motion','wt_views','wt_ui'].forEach(k=>localStorage.removeItem(k));
+    ['wt_fav_order','wt_profile','wt_last','wt_accent','wt_sound','wt_motion','wt_views','wt_ui'].forEach(k=>store.del(k));
+    authPendingClear();authStarted(null);
     favs=new Set();favOrder=[];views=[];profile=null;last=null;accent='blue';soundOn=true;motionOn=true;
     ui={density:'cozy',cols:'auto',ping:true,maplabel:true};applySettings();renderViews();buildActs();
     if(route==='servers'||route==='all')renderServers({animate:false});
@@ -1621,12 +1840,12 @@ document.addEventListener('input',e=>{
   if(e.target.id==='srvSearch'){query=e.target.value;renderServers({keepFocus:true,animate:false})}
   if(e.target.id==='globalSearch')renderSearch(e.target.value);
   if(e.target.id==='banSearch')renderBans(e.target.value);
-  if(e.target.id==='mapSearch'){mapQuery=e.target.value;buildMaps()}
+  if(e.target.id==='mapSearch'){mapQuery=e.target.value;buildMaps(true)}
 });
 document.addEventListener('change',e=>{
   if(e.target.id==='srvSort'){sortMode=e.target.value;renderServers({keepFocus:true,animate:false})}
   if(e.target.id==='srvCols'){ui.cols=e.target.value;applyUI()}
-  if(e.target.id==='mapSort'){mapSort=e.target.value;buildMaps()}
+  if(e.target.id==='mapSort'){mapSort=e.target.value;buildMaps(false)}
 });
 $('#modalOver').addEventListener('click',e=>{if(e.target.id==='modalOver')closeModal()});
 $('#searchOver').addEventListener('click',e=>{if(e.target.id==='searchOver')closeSearch()});
@@ -1681,7 +1900,7 @@ document.addEventListener('keydown',e=>{
   }
   if(typing){
     if(e.key==='Enter'&&document.activeElement.id==='chatInput')sendChat($('#chatInput').value);
-    if(e.key==='Enter'&&document.activeElement.id==='viewName'){e.preventDefault();document.querySelector('[data-action="view-save"]').click()}
+    if(e.key==='Enter'&&document.activeElement.id==='viewName'){e.preventDefault();const b=document.querySelector('[data-action="view-save"]');if(b)b.click()}
     return;
   }
   if(e.key==='/'||(e.ctrlKey&&e.key.toLowerCase()==='k')){e.preventDefault();flashHint('slash');openSearch();return}
@@ -1729,23 +1948,30 @@ requestAnimationFrame(pollPad);
   window.addEventListener('resize',size);
 })();
 
-/* ================= INIT ================= */
-Promise.all([
-  resolveAsset('icon').then(u=>{ICON_URL=u}),
-  ...['dexer','primer','viper'].map(k=>resolveAsset(k).then(u=>{DONATE_IMG[k]=u})),
-  ...MAPS_LIST.map(m=>resolveAsset(MAP_ALIAS[m]||m).then(u=>{MAP_IMG[m]=u}))
-]).then(async ()=>{
-  const mark=ICON_URL?'<img src="'+ICON_URL+'" alt="WONTAKE">':ic('ghost');
-  $('#brandMark').innerHTML=mark;$('#guideMark').innerHTML=mark;$('#bootMark').innerHTML=mark;
-  if(ICON_URL)$('#fav').href=ICON_URL;
-  $('#hbBrand').textContent='wontake · © 2026 · '+NS+' servers';
-  $('#shopSub').textContent='Привилегии действуют на всех '+NS+' серверах сети';
-  buildNav();buildTiles();buildSvTabs();buildActs();applySettings();renderViews();
-  refreshLive([]);countUp($('#chipOnline'),grandTotal(),1200);
-  applyRoute();polish();
-  await handleSteamReturn();
+/* ==================== INIT ==================== */
+applyBrand();
+renderGuide();
+handleSteamReturn();
+$('#hbBrand').textContent='wontake · © 2026 · '+NS+' servers';
+$('#shopSub').textContent='Привилегии действуют на всех '+NS+' серверах сети';
+buildNav();buildTiles();buildSvTabs();buildActs();applySettings();renderViews();
+refreshLive([]);countUp($('#chipOnline'),grandTotal(),1200);
+applyRoute();polish();
+
+resolveAsset('icon').then(u=>{if(u){ICON_URL=u;applyBrand();renderGuide()}});
+Promise.all(['dexer','primer','viper'].map(k=>resolveAsset(k).then(u=>{DONATE_IMG[k]=u}))).then(()=>{
+  rendered.shop=false;
+  if(route==='shop')renderSection('shop');
+  if(ambientKey==='shop')setAmbient('shop');
+  buildActs();
 });
-setTimeout(()=>{const b=$('#boot');if(b)b.remove()},3000);
+MAPS_LIST.forEach(m=>{
+  resolveAsset(MAP_ALIAS[m]||m).then(u=>{
+    MAP_IMG[m]=u;
+    patchMap(m);
+  });
+});
+setTimeout(()=>{const b=$('#boot');if(b)b.remove()},2600);
 </script>
 </body>
 </html>
